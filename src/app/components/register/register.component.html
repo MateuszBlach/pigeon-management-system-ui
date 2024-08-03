@@ -2,16 +2,28 @@
   <h2>Register</h2>
   <form (ngSubmit)="register()">
     <div>
-      <label for="username">Username</label>
-      <input type="text" id="username" [(ngModel)]="username" name="username">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name">
+    </div>
+    <div>
+      <label for="surname">Surname</label>
+      <input type="text" id="surname" [(ngModel)]="user.surname" name="surname">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="user.email" name="email">
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password">
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
     </div>
     <div>
       <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword">
+      <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+    </div>
+    <div>
+      <label for="birthdate">Birth Date</label>
+      <input type="date" id="birthdate" [(ngModel)]="user.birthdate" name="birthdate">
     </div>
     <button type="submit">Register</button>
   </form>
