@@ -2,3 +2,38 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.register-card, .login-card {
+  max-width: 400px;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.8); /* Półprzezroczyste tło dla lepszej czytelności tekstu */
+  border-radius: 10px;
+}
+
+.register-form, .login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-full-width, .login-full-width {
+  width: 100%;
+}
+
+.register-button-container, .login-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.register-background, .login-background {
+  background-image: url('app/assets/images/flying_pigeons.jpg');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

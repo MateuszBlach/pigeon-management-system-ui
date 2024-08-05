@@ -18,8 +18,7 @@ import {UserDTO} from "../../dto/user.dto";
     MatInputModule,
     MatCardModule
   ],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
 
@@ -30,13 +29,10 @@ export class LoginComponent {
   login() {
     this.authService.login(this.user).subscribe(
       response => {
-        console.log('Login successful', response);
-        alert('Login successful!');
-        this.authService.loggedInUser = response;
-        this.navigateToRegister();
+        this.authService.setLoggedInUser(response);
+        this.router.navigate(['/']);
       },
       error => {
-        console.error('Login failed', error);
         alert('Login failed. Please try again.');
       }
     );

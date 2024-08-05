@@ -1,21 +1,23 @@
-import { Component } from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
-import {AuthService} from "./services/auth/auth.service";
-import {NgIf} from "@angular/common";
-import {HttpClient} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from "./services/auth/auth.service";
+import { NgIf } from "@angular/common";
+import { UserDTO } from "./dto/user.dto";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NgIf],
-  providers: [HttpClient],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  username = 'user';
+export class AppComponent implements OnInit {
 
-  constructor(protected authService: AuthService, private router: Router) {}
+  constructor(protected authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+
+  }
 
   logout() {
     this.authService.logout();

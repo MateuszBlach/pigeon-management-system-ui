@@ -1,7 +1,6 @@
 <div *ngIf="authService.isLoggedIn(); else loginTemplate">
-  <h2>Welcome, {{username}}</h2>
   <button (click)="logout()">Logout</button>
-  <!-- Treść strony głównej -->
+
 </div>
 
 <ng-template #loginTemplate>

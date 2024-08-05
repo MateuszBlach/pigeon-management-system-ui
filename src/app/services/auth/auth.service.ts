@@ -9,6 +9,7 @@ import {UserDTO} from "../../dto/user.dto";
 export class AuthService {
 
   private baseUrl = 'http://localhost:8080/user';
+  private loggedIn = false;
   public loggedInUser: UserDTO | null = null;
 
   constructor(private httpClient: HttpClient) { }
@@ -22,10 +23,16 @@ export class AuthService {
   }
 
   logout(): void {
+    this.loggedIn = false;
     this.loggedInUser = null;
   }
 
   isLoggedIn(): boolean {
-    return this.loggedInUser !== null;
+    return this.loggedIn;
+  }
+
+  setLoggedInUser(user: UserDTO): void {
+    this.loggedIn = true;
+    this.loggedInUser = user;
   }
 }
