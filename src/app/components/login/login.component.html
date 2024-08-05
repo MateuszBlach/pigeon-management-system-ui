@@ -1,20 +1,22 @@
 <div class="login-background"></div>
+<form (ngSubmit)="login()">
 <mat-card class="login-card">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
     <form class="login-form" (ngSubmit)="login()">
       <mat-form-field appearance="fill" class="login-full-width">
-        <mat-label>Username</mat-label>
-        <input matInput type="text" id="username" [(ngModel)]="username" name="username">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" id="email" [(ngModel)]="user.email" name="email">
       </mat-form-field>
       <mat-form-field appearance="fill" class="login-full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" id="password" [(ngModel)]="password" name="password">
+        <input matInput type="password" id="password" [(ngModel)]="user.password" name="password">
       </mat-form-field>
       <div class="login-button-container">
-        <button mat-flat-button color="primary" type="submit">Login</button>
+        <button mat-flat-button color="primary" type="submit" >Login</button>
         <button mat-flat-button color="accent" type="button" (click)="navigateToRegister()">Register</button>
       </div>
     </form>
   </mat-card-content>
 </mat-card>
+</form>

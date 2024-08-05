@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import {UserDTO} from "../../dto/user.dto";
 
 @Component({
   selector: 'app-login',
@@ -21,17 +22,24 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+
+  user: UserDTO = new UserDTO();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/']);
-    } else {
-      alert('Invalid credentials');
-    }
+    this.authService.login(this.user).subscribe(
+      response => {
+        console.log('Login successful', response);
+        alert('Login successful!');
+        this.authService.loggedInUser = response;
+        this.navigateToRegister();
+      },
+      error => {
+        console.error('Login failed', error);
+        alert('Login failed. Please try again.');
+      }
+    );
   }
 
   navigateToRegister(): void {
