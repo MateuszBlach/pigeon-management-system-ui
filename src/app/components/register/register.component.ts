@@ -7,6 +7,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import {AuthTokenService} from "../../services/auth-token/auth-token.service";
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,7 @@ export class RegisterComponent {
   user: UserDTO = new UserDTO();
   confirmPassword = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private authTokenService: AuthTokenService) {}
 
   register() {
     if (this.user.password !== this.confirmPassword) {
@@ -33,16 +34,15 @@ export class RegisterComponent {
       return;
     }
 
-    // Logika rejestracji (np. wysyłanie danych do backendu)
     this.authService.register(this.user).subscribe(
       response => {
         console.log('Registration successful', response);
-        alert('Registration successful!');
-        this.navigateToLogin();
+        this.authTokenService.setAuthToken(response.token);
+        this.authService.setLoggedInUser(response);
+        this.router.navigate(['/']);
       },
       error => {
         console.error('Registration failed', error);
-        alert('Registration failed. Please try again.');
       }
     );
   }
