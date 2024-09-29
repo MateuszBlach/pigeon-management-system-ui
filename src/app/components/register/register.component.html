@@ -1,38 +1,35 @@
-<div class="register-background"></div>
-<form (ngSubmit)="register()">
-  <mat-card class="register-card">
-    <mat-card-title>Register</mat-card-title>
+<div class="pigeon-background"></div>
+  <mat-card class="form-card">
+    <mat-card-title>Rejestracja</mat-card-title>
     <mat-card-content>
-      <form class="register-form" (ngSubmit)="register()">
-        <mat-form-field appearance="fill" class="register-full-width">
-          <mat-label>Name</mat-label>
+      <form (ngSubmit)="register()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Imię</mat-label>
           <input matInput type="text" id="name" [(ngModel)]="user.name" name="name" required>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="register-full-width">
-          <mat-label>Surname</mat-label>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nazwisko</mat-label>
           <input matInput type="text" id="surname" [(ngModel)]="user.surname" name="surname" required>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="register-full-width">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>Email</mat-label>
           <input matInput type="email" id="email" [(ngModel)]="user.email" name="email" required>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="register-full-width">
-          <mat-label>Password</mat-label>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Hasło</mat-label>
           <input matInput type="password" id="password" [(ngModel)]="user.password" name="password" required>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="register-full-width">
-          <mat-label>Confirm Password</mat-label>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Powtórz hasło</mat-label>
           <input matInput type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="register-full-width">
-          <mat-label>Birth Date</mat-label>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Data urodzin</mat-label>
           <input matInput type="date" id="birthdate" [(ngModel)]="user.birthdate" name="birthdate">
         </mat-form-field>
-        <div class="register-button-container">
-          <button mat-flat-button color="primary" type="submit">Register</button>
-          <button mat-flat-button color="accent" type="button" (click)="navigateToLogin()">Login</button>
+        <div class="form-button-container">
+          <button mat-flat-button color="primary" type="submit">Zarejestruj</button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
-</form>

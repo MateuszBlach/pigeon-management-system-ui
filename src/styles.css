@@ -3,7 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.register-card, .login-card {
+mat-card-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.form-card {
   max-width: 400px;
   margin: 2em auto;
   padding: 1em;
@@ -11,22 +16,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 10px;
 }
 
-.register-form, .login-form {
+form {
   display: flex;
   flex-direction: column;
 }
 
-.register-full-width, .login-full-width {
+.full-width {
   width: 100%;
 }
 
-.register-button-container, .login-button-container {
+.form-button-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
-.register-background, .login-background {
+.pigeon-background {
   background-image: url('app/assets/images/flying_pigeons.jpg');
   background-size: cover;
   background-position: center;
@@ -36,4 +41,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.nav-bar {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border-bottom: 2px solid #444;
+}
+
+.nav-button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #777;
+  transform: scale(1.05);
+}
+
+.nav-button:active {
+  background-color: #999;
+}
+
+.nav-bar button:first-child {
+  margin-left: 0;
+}
+
+.nav-bar button:last-child {
+  margin-right: 0;
 }

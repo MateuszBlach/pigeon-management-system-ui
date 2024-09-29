@@ -11,16 +11,26 @@ import { UserDTO } from "./dto/user.dto";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
 
-  constructor(protected authService: AuthService, private router: Router) { }
+  loggedIn: boolean = false;
 
-  ngOnInit(): void {
+  constructor(public authService: AuthService, private router: Router) {}
 
+  ngOnInit() {
+    this.authService.isLoggedIn().subscribe((status: boolean) => {
+      this.loggedIn = status;
+      console.log(this.loggedIn);
+    });
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['login']);
   }
+
+  navigate(route: string) {
+    this.router.navigate([route]);
+  }
+
 }

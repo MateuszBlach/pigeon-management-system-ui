@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { UserDTO } from "../../dto/user.dto";
 import { backend } from "../../shared/application-constans";
 import { HttpService } from '../http/http.service';
@@ -11,7 +11,7 @@ import { AuthTokenService } from '../auth-token/auth-token.service';
 export class AuthService {
 
   private url = backend.userUrl;
-  private loggedIn = false;
+  private loggedIn = new BehaviorSubject<boolean>(false);
   public loggedInUser: UserDTO | null = null;
 
   constructor(private httpService: HttpService, private authTokenService: AuthTokenService) { }
@@ -26,17 +26,17 @@ export class AuthService {
 
 
   logout(): void {
-    this.loggedIn = false;
+    this.loggedIn.next(false)
     this.loggedInUser = null;
     this.authTokenService.setAuthToken(null);
   }
 
-  isLoggedIn(): boolean {
-    return this.loggedIn;
+  isLoggedIn(): Observable<boolean> {
+    return this.loggedIn.asObservable();
   }
 
   setLoggedInUser(user: UserDTO): void {
-    this.loggedIn = true;
+    this.loggedIn.next(true);
     this.loggedInUser = user;
   }
 }

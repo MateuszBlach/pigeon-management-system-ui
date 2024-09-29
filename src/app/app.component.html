@@ -1,8 +1,15 @@
-<div *ngIf="authService.isLoggedIn(); else loginTemplate">
-  <button (click)="logout()">Logout</button>
-
+<div *ngIf="loggedIn; else loginTemplate">
+  <div class="nav-bar">
+    <button class="nav-button" (click)="navigate('pigeon')">Gołębie</button>
+    <button class="nav-button" (click)="logout()">Wyloguj się</button>
+  </div>
 </div>
 
 <ng-template #loginTemplate>
-  <router-outlet></router-outlet>
+  <div class="nav-bar">
+    <button class="nav-button" (click)="navigate('login')">Logowanie</button>
+    <button class="nav-button" (click)="navigate('register')">Rejestracja</button>
+  </div>
 </ng-template>
+
+<router-outlet></router-outlet>

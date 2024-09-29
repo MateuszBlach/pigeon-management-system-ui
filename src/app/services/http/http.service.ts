@@ -20,7 +20,7 @@ export class HttpService {
 
     let headers = new HttpHeaders();
     const token = this.authTokenService.getAuthToken();
-    if (token) {
+    if (token && !url.includes("login") && !url.includes("register")) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 

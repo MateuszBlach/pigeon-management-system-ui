@@ -32,15 +32,11 @@ export class LoginComponent {
       response => {
         this.authTokenService.setAuthToken(response.token)
         this.authService.setLoggedInUser(response);
-        this.router.navigate(['/']);
+        this.router.navigate(['/pigeon']);
       },
       error => {
         alert('Login failed. Please try again.');
       }
     );
-  }
-
-  navigateToRegister(): void {
-    this.router.navigate(['/register']);
   }
 }
