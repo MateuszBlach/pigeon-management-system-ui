@@ -35,6 +35,13 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
+  getLoggedUserId():number {
+    if (this.loggedInUser && this.loggedInUser.id) {
+      return this.loggedInUser.id;
+    }
+    return -1;
+  }
+
   setLoggedInUser(user: UserDTO): void {
     this.loggedIn.next(true);
     this.loggedInUser = user;
