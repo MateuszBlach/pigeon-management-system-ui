@@ -4,14 +4,17 @@ import { PigeonDTO } from "../../dto/pigeon.dto";
 import { AuthService } from "../../services/auth/auth.service";
 import { AddPigeonComponent } from "./add-pigeon/add-pigeon.component";
 import { AgGridAngular } from "ag-grid-angular";
-import { ColDef } from "ag-grid-community"; // Import ColDef
+import { ColDef } from "ag-grid-community";
+import {MatDialog} from "@angular/material/dialog";
+import {MatButton} from "@angular/material/button"; // Import ColDef
 
 @Component({
   selector: "pigeon",
   standalone: true,
   imports: [
     AddPigeonComponent,
-    AgGridAngular
+    AgGridAngular,
+    MatButton
   ],
   templateUrl: "./pigeons-main-page.component.html"
 })
@@ -29,7 +32,15 @@ export class PigeonsMainPageComponent implements OnInit {
   constructor(
     private pigeonService: PigeonService,
     private authService: AuthService,
+    private dialog: MatDialog
   ) {}
+
+  openAddPigeonDialog() {
+    const dialogRef = this.dialog.open(AddPigeonComponent, {
+      width: '250px',
+      height: '500px',
+    })
+  }
 
   ngOnInit(): void {
     let loggedUserId: number;

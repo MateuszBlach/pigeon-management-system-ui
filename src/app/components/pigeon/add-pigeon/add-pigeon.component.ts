@@ -7,6 +7,7 @@ import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {PigeonService} from "../../../services/pigeon/pigeon.service";
 import {AuthService} from "../../../services/auth/auth.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-pigeon',
@@ -27,18 +28,28 @@ export class AddPigeonComponent {
 
   pigeon: PigeonDTO = new PigeonDTO();
 
-  constructor(private pigeonService: PigeonService, private authService: AuthService) {
+  constructor(
+    private pigeonService: PigeonService,
+    private authService: AuthService,
+    private dialogRef: MatDialogRef<AddPigeonComponent>
+  ) {
   }
 
   addNewPigeon() {
     this.pigeon.userId = this.authService.getLoggedUserId()
     this.pigeonService.addPigeon(this.pigeon).subscribe(
       response => {
-        alert("dodano golebia")
+        this.dialogRef.close(true);
       },
       error => {
+        this.dialogRef.close(false);
         console.log(error)
       }
     )
   }
+
+  close() {
+    this.dialogRef.close();
+  }
+
 }
