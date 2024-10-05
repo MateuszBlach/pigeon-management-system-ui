@@ -1,2 +1,10 @@
 <h2>Pigeon component</h2>
 <app-add-pigeon></app-add-pigeon>
+
+<ag-grid-angular
+  style="width: 100%; height: 400px;"
+  class="ag-theme-alpine"
+  [rowData]="pigeons"
+  [columnDefs]="columnDefs">
+</ag-grid-angular>
+
