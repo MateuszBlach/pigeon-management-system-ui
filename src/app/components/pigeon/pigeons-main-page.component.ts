@@ -39,11 +39,11 @@ export class PigeonsMainPageComponent implements OnInit {
   }
 
   openAddPigeonDialog() {
-    const dialogRef = this.dialog.open(AddPigeonComponent, {
+    this.dialog.open(AddPigeonComponent, {
       width: '250px',
       height: '500px',
     })
-    dialogRef.afterClosed().subscribe((result: boolean) => {
+    .afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.loadPigeons(this.loggedUserId);
       }
