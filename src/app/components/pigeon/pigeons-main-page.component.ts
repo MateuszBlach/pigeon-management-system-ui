@@ -19,9 +19,10 @@ import {MatButton} from "@angular/material/button"; // Import ColDef
   templateUrl: "./pigeons-main-page.component.html"
 })
 export class PigeonsMainPageComponent implements OnInit {
+
+  loggedUserId: number;
   pigeons: PigeonDTO[] = [];
 
-  // Explicitly type the columnDefs array as ColDef[]
   columnDefs: ColDef[] = [
     { headerName: 'Numer obrączki', field: 'ring' },
     { headerName: 'Płeć', field: 'gender' },
@@ -33,20 +34,26 @@ export class PigeonsMainPageComponent implements OnInit {
     private pigeonService: PigeonService,
     private authService: AuthService,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.loggedUserId = -1
+  }
 
   openAddPigeonDialog() {
     const dialogRef = this.dialog.open(AddPigeonComponent, {
       width: '250px',
       height: '500px',
     })
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.loadPigeons(this.loggedUserId);
+      }
+    });
   }
 
   ngOnInit(): void {
-    let loggedUserId: number;
     if (this.authService.loggedInUser !== null && this.authService.loggedInUser.id) {
-      loggedUserId = this.authService.loggedInUser.id;
-      this.loadPigeons(loggedUserId);
+      this.loggedUserId = this.authService.loggedInUser.id;
+      this.loadPigeons(this.loggedUserId);
     }
   }
 
@@ -59,5 +66,35 @@ export class PigeonsMainPageComponent implements OnInit {
         this.pigeons = [];
       }
     );
+  }
+
+  handleActionClick(params: any): void {
+    const clickedElement = params.event.target;
+    const rowData = params.data;
+
+    if (clickedElement.classList.contains('edit-btn')) {
+      this.editPigeon(rowData);
+    } else if (clickedElement.classList.contains('delete-btn')) {
+      this.deletePigeon(rowData);
+    }
+  }
+
+  editPigeon(pigeon: PigeonDTO): void {
+    console.log("edit", pigeon)
+  }
+
+
+  deletePigeon(pigeon: PigeonDTO): void {
+    if (confirm(`Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`)) {
+      this.pigeonService.deletePigeon(pigeon).subscribe(
+        response => {
+          console.log(response)
+          this.loadPigeons(this.loggedUserId);
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
   }
 }
