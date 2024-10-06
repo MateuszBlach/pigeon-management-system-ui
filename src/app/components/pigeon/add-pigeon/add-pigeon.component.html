@@ -1,7 +1,7 @@
 <mat-card class="form-card">
-  <mat-card-title>Dodaj nowego gołębia</mat-card-title>
+  <mat-card-title>{{ mode == 'add' ? 'Dodaj nowego gołębia' : 'Edytuj gołębia'}}</mat-card-title>
   <mat-card-content>
-    <form #form="ngForm" (ngSubmit)="addNewPigeon()">
+    <form #form="ngForm" (ngSubmit)="submitForm()">
       <mat-form-field appearance="fill" class="form-fullwidth">
         <mat-label>Numer obrączki</mat-label>
         <input matInput type="text" id="ring" [(ngModel)]="pigeon.ring" name="ring" required>
@@ -19,8 +19,8 @@
         <input matInput type="text" id="plumageColor" [(ngModel)]="pigeon.plumageColor" name="plumageColor" required>
       </mat-form-field>
       <div class="form-button-container">
-        <button mat-flat-button [disabled]="!form.valid" type="submit">Dodaj</button>
-        <button mat-flat-button (click)="close()">Anuluj</button>
+        <button mat-flat-button [disabled]="!form.valid" type="submit">{{ mode == 'add' ? 'Dodaj' : 'Edytuj'}}</button>
+        <button mat-flat-button type="button" (click)="close()">Anuluj</button>
       </div>
     </form>
   </mat-card-content>

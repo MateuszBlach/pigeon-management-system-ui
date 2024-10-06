@@ -24,10 +24,21 @@ export class PigeonsMainPageComponent implements OnInit {
   pigeons: PigeonDTO[] = [];
 
   columnDefs: ColDef[] = [
-    { headerName: 'Numer obrączki', field: 'ring' },
-    { headerName: 'Płeć', field: 'gender' },
-    { headerName: 'Kolor oczu', field: 'eyeColor' },
-    { headerName: 'Kolor upierzenia', field: 'plumageColor' },
+    {
+      headerName: 'Akcje',
+      field: 'actions',
+      cellRenderer: () => {
+        return `
+          <button mat-button class="edit-btn">Edytuj</button>
+          <button mat-button class="delete-btn">Usuń</button>
+        `;
+      },
+      onCellClicked: (params) => this.handleActionClick(params)
+    },
+    {headerName: 'Numer obrączki', field: 'ring'},
+    {headerName: 'Płeć', field: 'gender'},
+    {headerName: 'Kolor oczu', field: 'eyeColor'},
+    {headerName: 'Kolor upierzenia', field: 'plumageColor'},
   ];
 
   constructor(
@@ -42,6 +53,10 @@ export class PigeonsMainPageComponent implements OnInit {
     this.dialog.open(AddPigeonComponent, {
       width: '250px',
       height: '500px',
+      data: {
+        mode: "add",
+        pigeon: new PigeonDTO()
+      }
     })
     .afterClosed().subscribe((result: boolean) => {
       if (result) {
@@ -80,7 +95,19 @@ export class PigeonsMainPageComponent implements OnInit {
   }
 
   editPigeon(pigeon: PigeonDTO): void {
-    console.log("edit", pigeon)
+    this.dialog.open(AddPigeonComponent, {
+      width: '250px',
+      height: '500px',
+      data: {
+        mode: "edit",
+        pigeon: pigeon
+      }
+    })
+      .afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.loadPigeons(this.loggedUserId);
+      }
+    });
   }
 
 

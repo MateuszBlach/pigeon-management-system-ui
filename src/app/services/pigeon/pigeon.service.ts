@@ -24,4 +24,8 @@ export class PigeonService {
   deletePigeon(pigeon: PigeonDTO): Observable<PigeonDTO> {
     return this.http.request<PigeonDTO>('DELETE',`${this.url}/delete`,pigeon);
   }
+
+  updatePigeon(pigeon: PigeonDTO): Observable<PigeonDTO> {
+    return this.http.request<PigeonDTO>('PUT',`${this.url}/update`,pigeon);
+  }
 }
