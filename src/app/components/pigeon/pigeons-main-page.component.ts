@@ -22,6 +22,7 @@ export class PigeonsMainPageComponent implements OnInit {
 
   loggedUserId: number;
   pigeons: PigeonDTO[] = [];
+  gridQuickFilter: string = '';
 
   columnDefs: ColDef[] = [
     {
@@ -130,5 +131,9 @@ export class PigeonsMainPageComponent implements OnInit {
         }
       )
     }
+  }
+
+  onGridQuickFilterChanged(event: any) {
+    this.gridQuickFilter = event.target.value;
   }
 }
