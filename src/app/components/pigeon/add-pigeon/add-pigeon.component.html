@@ -8,8 +8,12 @@
       </mat-form-field>
       <mat-form-field appearance="fill" class="form-fullwidth">
         <mat-label>Płeć</mat-label>
-        <input matInput type="text" id="gender" [(ngModel)]="pigeon.gender" name="gender" required>
+        <mat-select id="gender" [(ngModel)]="pigeon.gender" name="gender" required>
+          <mat-option [value]="'Samiec'">Samiec</mat-option>
+          <mat-option [value]="'Samica'">Samica</mat-option>
+        </mat-select>
       </mat-form-field>
+
       <mat-form-field appearance="fill" class="form-fullwidth">
         <mat-label>Kolor oczu</mat-label>
         <input matInput type="text" id="eyeColor" [(ngModel)]="pigeon.eyeColor" name="eyeColor" required>

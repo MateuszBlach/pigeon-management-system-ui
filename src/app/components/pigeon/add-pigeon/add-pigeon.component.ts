@@ -8,6 +8,7 @@ import {MatButton} from "@angular/material/button";
 import {PigeonService} from "../../../services/pigeon/pigeon.service";
 import {AuthService} from "../../../services/auth/auth.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-add-pigeon',
@@ -20,7 +21,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
     MatCardContent,
     MatFormField,
     MatInput,
-    MatButton
+    MatButton,
+    MatSelect,
+    MatOption
   ],
   templateUrl: './add-pigeon.component.html'
 })

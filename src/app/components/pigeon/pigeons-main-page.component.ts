@@ -36,7 +36,14 @@ export class PigeonsMainPageComponent implements OnInit {
       onCellClicked: (params) => this.handleActionClick(params)
     },
     {headerName: 'Numer obrączki', field: 'ring'},
-    {headerName: 'Płeć', field: 'gender'},
+    {headerName: 'Płeć', field: 'gender',  cellStyle: params => {
+        if (params.value === "Samiec") {
+          return { backgroundColor: 'lightblue' };
+        } else if (params.value === "Samica") {
+          return { backgroundColor: 'pink' };
+        }
+        return null;
+      }},
     {headerName: 'Kolor oczu', field: 'eyeColor'},
     {headerName: 'Kolor upierzenia', field: 'plumageColor'},
   ];
