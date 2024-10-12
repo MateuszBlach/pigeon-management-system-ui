@@ -13,14 +13,30 @@
           <mat-option [value]="'Samica'">Samica</mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field appearance="fill" class="form-fullwidth">
-        <mat-label>Kolor oczu</mat-label>
-        <input matInput type="text" id="eyeColor" [(ngModel)]="pigeon.eyeColor" name="eyeColor" required>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="form-fullwidth">
-        <mat-label>Kolor upierzenia</mat-label>
-        <input matInput type="text" id="plumageColor" [(ngModel)]="pigeon.plumageColor" name="plumageColor" required>
+        <mat-label>Barwa</mat-label>
+        <mat-select id="color" [(ngModel)]="pigeon.color" name="color" required>
+          <mat-option [value]="'Niebieska'">1-Niebieska</mat-option>
+          <mat-option [value]="'Niebieska nakrapiana'">2-Niebieska nakrapiana</mat-option>
+          <mat-option [value]="'Ciemna nakrapiana'">3-Ciemna nakrapiana</mat-option>
+          <mat-option [value]="'Ciemna'">4-Ciemna</mat-option>
+          <mat-option [value]="'Czarna'">5-Czarna</mat-option>
+          <mat-option [value]="'Czerwona nakrapiana'">6-Czerwona nakrapiana</mat-option>
+          <mat-option [value]="'Czerwona'">7-Czerwona</mat-option>
+          <mat-option [value]="'Płowa'">8-Płowa</mat-option>
+          <mat-option [value]="'Biała'">9-Biała</mat-option>
+          <mat-option [value]="'Szpakowata'">10-Szpakowata</mat-option>
+          <mat-option [value]="'Niebieska pstra'">11-Niebieska pstra</mat-option>
+          <mat-option [value]="'Niebieska nakrapiana pstra'">12-Niebieska nakrapiana pstra</mat-option>
+          <mat-option [value]="'Ciemna nakrapiana pstra'">13-Ciemna nakrapiana pstra</mat-option>
+          <mat-option [value]="'Ciemna pstra'">14-Ciemna pstra</mat-option>
+          <mat-option [value]="'Czarna pstra'">15-Czarna pstra</mat-option>
+          <mat-option [value]="'Czerwona nakrapiana pstra'">16-Czerwona nakrapiana pstra</mat-option>
+          <mat-option [value]="'Czerwona pstra'">17-Czerwona pstra</mat-option>
+          <mat-option [value]="'Płowa pstra'">18-Płowa pstra</mat-option>
+          <mat-option [value]="'Szpakowata pstra'">19-Szpakowata pstra</mat-option>
+          <mat-option [value]="'Czerwona szpakowata'">20-Czerwona szpakowata</mat-option>
+        </mat-select>
       </mat-form-field>
       <div class="form-button-container">
         <button mat-flat-button [disabled]="!form.valid" type="submit">{{ mode == 'add' ? 'Dodaj' : 'Edytuj'}}</button>

@@ -45,8 +45,7 @@ export class PigeonsMainPageComponent implements OnInit {
         }
         return null;
       }},
-    {headerName: 'Kolor oczu', field: 'eyeColor'},
-    {headerName: 'Kolor upierzenia', field: 'plumageColor'},
+    {headerName: 'Barwa', field: 'color'},
   ];
 
   constructor(
