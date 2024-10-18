@@ -20,7 +20,6 @@ import {MatButton} from "@angular/material/button"; // Import ColDef
 })
 export class PigeonsMainPageComponent implements OnInit {
 
-  loggedUserId: number;
   pigeons: PigeonDTO[] = [];
   gridQuickFilter: string = '';
 
@@ -45,9 +44,7 @@ export class PigeonsMainPageComponent implements OnInit {
     private pigeonService: PigeonService,
     private authService: AuthService,
     private dialog: MatDialog
-  ) {
-    this.loggedUserId = -1
-  }
+  ) {}
 
   getGenderCellStyle(params: any): any {
     if (params.value === "Samiec") {
@@ -116,16 +113,13 @@ export class PigeonsMainPageComponent implements OnInit {
     })
     .afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.loadPigeons(this.loggedUserId);
+        this.loadPigeons(this.authService.getLoggedUserId());
       }
     });
   }
 
   ngOnInit(): void {
-    if (this.authService.loggedInUser !== null && this.authService.loggedInUser.id) {
-      this.loggedUserId = this.authService.loggedInUser.id;
-      this.loadPigeons(this.loggedUserId);
-    }
+    this.loadPigeons(this.authService.getLoggedUserId());
   }
 
   private loadPigeons(userId: number): void {
@@ -161,7 +155,7 @@ export class PigeonsMainPageComponent implements OnInit {
     })
       .afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.loadPigeons(this.loggedUserId);
+        this.loadPigeons(this.authService.getLoggedUserId());
       }
     });
   }
@@ -172,7 +166,7 @@ export class PigeonsMainPageComponent implements OnInit {
       this.pigeonService.deletePigeon(pigeon).subscribe(
         response => {
           console.log(response)
-          this.loadPigeons(this.loggedUserId);
+          this.loadPigeons(this.authService.getLoggedUserId());
         },
         error => {
           console.log(error)
