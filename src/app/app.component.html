@@ -1,6 +1,7 @@
 <div *ngIf="loggedIn; else loginTemplate">
   <div class="nav-bar">
     <button class="nav-button" (click)="navigate('pigeon')">Gołębie</button>
+    <button class="nav-button" (click)="navigate('flights')">Loty</button>
     <button class="nav-button" (click)="logout()">Wyloguj się</button>
   </div>
 </div>
