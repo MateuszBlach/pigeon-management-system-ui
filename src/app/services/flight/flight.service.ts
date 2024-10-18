@@ -2,7 +2,11 @@ import {backend} from "../../shared/application-constans";
 import {HttpService} from "../http/http.service";
 import {Observable} from "rxjs";
 import {FlightDTO} from "../../dto/flight.dto";
+import {Injectable} from "@angular/core";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class FlightService {
 
   private url = backend.flightUrl
