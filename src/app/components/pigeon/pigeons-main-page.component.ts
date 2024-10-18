@@ -108,7 +108,7 @@ export class PigeonsMainPageComponent implements OnInit {
       height: '500px',
       data: {
         mode: "add",
-        pigeon: new PigeonDTO()
+        pigeon: {}
       }
     })
     .afterClosed().subscribe((result: boolean) => {
@@ -163,7 +163,7 @@ export class PigeonsMainPageComponent implements OnInit {
 
   deletePigeon(pigeon: PigeonDTO): void {
     if (confirm(`Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`)) {
-      this.pigeonService.deletePigeon(pigeon).subscribe(
+      this.pigeonService.deletePigeon(pigeon.id).subscribe(
         response => {
           console.log(response)
           this.loadPigeons(this.authService.getLoggedUserId());

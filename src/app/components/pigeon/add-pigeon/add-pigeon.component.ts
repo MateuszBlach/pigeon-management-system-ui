@@ -29,7 +29,7 @@ import {MatOption, MatSelect} from "@angular/material/select";
 })
 export class AddPigeonComponent {
 
-  pigeon: PigeonDTO = new PigeonDTO();
+  pigeon: PigeonDTO;
   mode: string = ''
 
   constructor(

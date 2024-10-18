@@ -1,7 +1,7 @@
-export class PigeonDTO {
-  id?: number;
-  ring?: string;
-  gender?: string;
-  color?: string;
-  userId?: number;
+export interface PigeonDTO {
+  id: number;
+  ring: string;
+  gender: string;
+  color: string;
+  userId: number;
 }
