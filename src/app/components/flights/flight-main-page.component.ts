@@ -7,14 +7,14 @@ import {ColDef} from "ag-grid-community";
 
 
 @Component({
-  selector: "flights",
+  selector: "flight",
   standalone: true,
   imports: [
     AgGridAngular,
   ],
-  templateUrl: "./flights-main-page.component.html"
+  templateUrl: "./flight-main-page.component.html"
 })
-export class FlightsMainPageComponent implements OnInit{
+export class FlightMainPageComponent implements OnInit{
 
   flights: FlightDTO[] = []
   gridQuickFilter: string = '';
