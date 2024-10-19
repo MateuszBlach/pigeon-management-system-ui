@@ -23,7 +23,7 @@ import {AuthTokenService} from "../../services/auth-token/auth-token.service";
 })
 export class RegisterComponent {
 
-  user: UserDTO = new UserDTO();
+  user: UserDTO = {}
   confirmPassword = '';
 
   constructor(private authService: AuthService, private router: Router, private authTokenService: AuthTokenService) {}

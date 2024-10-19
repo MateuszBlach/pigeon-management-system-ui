@@ -1,8 +1,8 @@
-export class UserDTO {
+export interface UserDTO {
   id?: number;
-  name: string = "";
-  surname: string = "";
+  name?: string;
+  surname?: string;
   birthdate?: Date;
-  password: string = "";
-  email: string = "";
+  password?: string;
+  email?: string;
 }
