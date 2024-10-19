@@ -1,0 +1,45 @@
+<mat-card class="form-card">
+  <mat-card-title>{{ mode == 'add' ? 'Dodaj nowy lot' : 'Edytuj lot' }}</mat-card-title>
+  <mat-card-content>
+    <form #form="ngForm" (ngSubmit)="submitForm()">
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Miasto</mat-label>
+        <input matInput type="text" id="city" [(ngModel)]="flight.city" name="city" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Data</mat-label>
+        <input matInput type="date" id="date" [(ngModel)]="flight.date" name="date" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Odległość</mat-label>
+        <input matInput type="number" id="distance" [(ngModel)]="flight.distance" name="distance" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Pogoda</mat-label>
+        <input matInput type="text" id="weather" [(ngModel)]="flight.weather" name="weather" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Kierunek wiatru</mat-label>
+        <mat-select id="windDirection" [(ngModel)]="flight.windDirection" name ="windDirection" required>
+          <mat-option [value]="'północny'">północny</mat-option>
+          <mat-option [value]="'północno-wschodni'">północno-wschodni</mat-option>
+          <mat-option [value]="'wschodni'">wschodni</mat-option>
+          <mat-option [value]="'południowo-wschodni'">południowo-wschodni</mat-option>
+          <mat-option [value]="'południowy'">południowy</mat-option>
+          <mat-option [value]="'południowo-zachodni'">południowo-zachodni</mat-option>
+          <mat-option [value]="'zachodni'">zachodni</mat-option>
+          <mat-option [value]="'północno-zachodni'">północno-zachodni</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Prędkość wiatru</mat-label>
+        <input matInput type="number" id="windSpeed" [(ngModel)]="flight.windSpeed" name="windSpeed" required>
+      </mat-form-field>
+      <div class="form-button-container">
+        <button mat-flat-button [disabled]="!form.valid" type="submit">{{ mode == 'add' ? 'Dodaj' : 'Edytuj' }}</button>
+        <button mat-flat-button type="button" (click)="close()">Anuluj</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
