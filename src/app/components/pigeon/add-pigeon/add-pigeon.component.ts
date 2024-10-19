@@ -11,7 +11,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
 
 @Component({
-  selector: 'app-add-pigeon',
   standalone: true,
   imports: [
     FormsModule,
