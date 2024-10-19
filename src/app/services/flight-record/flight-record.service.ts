@@ -21,8 +21,8 @@ export class FlightRecordService {
     return this.http.request<FlightRecordDTO>('POST',`${this.url}/add`,flightRecordDTO);
   }
 
-  deleteFlightRecord(flightRecordDTO: FlightRecordDTO): Observable<FlightRecordDTO> {
-    return this.http.request<FlightRecordDTO>('DELETE',`${this.url}/delete`,flightRecordDTO);
+  deleteFlightRecord(flightRecordId: number): Observable<any> {
+    return this.http.request('DELETE',`${this.url}/delete/${flightRecordId}`);
   }
 
   updateFlightRecord(flightRecordDTO: FlightRecordDTO): Observable<FlightRecordDTO> {
