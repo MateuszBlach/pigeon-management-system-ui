@@ -4,6 +4,9 @@ import {FlightDTO} from "../../dto/flight.dto";
 import {AuthService} from "../../services/auth/auth.service";
 import { AgGridAngular } from "ag-grid-angular";
 import {ColDef} from "ag-grid-community";
+import {MatButton} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
+import {AddFlightComponent} from "./add-flight/add-flight.component";
 
 
 @Component({
@@ -11,6 +14,7 @@ import {ColDef} from "ag-grid-community";
   standalone: true,
   imports: [
     AgGridAngular,
+    MatButton,
   ],
   templateUrl: "./flight-main-page.component.html"
 })
@@ -42,6 +46,7 @@ export class FlightMainPageComponent implements OnInit{
   constructor(
     private flightService:FlightService,
     private authService: AuthService,
+    private dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -70,15 +75,53 @@ export class FlightMainPageComponent implements OnInit{
     }
   }
 
-  private editFlight(rowData: FlightDTO): void {
-
+  private editFlight(flight: FlightDTO): void {
+    this.dialog.open(AddFlightComponent, {
+      width: '250px',
+      height: '600px',
+      data: {
+        mode: "edit",
+        flight: flight
+      }
+    })
+      .afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.loadFlights();
+      }
+    });
   }
 
-  private deleteFLight(rowData: FlightDTO): void {
-
+  private deleteFLight(flight: FlightDTO): void {
+    if (confirm(`Czy ma pewno chcesz usunąć lot z miasta ${flight.city} ?`)) {
+      this.flightService.deleteFlight(flight.id).subscribe(
+        response => {
+          console.log(response)
+          this.loadFlights();
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
   }
 
   onGridQuickFilterChanged(event: any) {
     this.gridQuickFilter = event.target.value;
+  }
+
+  openAddFlightDialog() {
+    this.dialog.open(AddFlightComponent, {
+      width: '250px',
+      height: '600px',
+      data: {
+        mode: "add",
+        flight: {}
+      }
+    })
+      .afterClosed().subscribe((result: boolean) => {
+        if (result) {
+          this.loadFlights();
+        }
+    })
   }
 }

@@ -1,3 +1,5 @@
+<button mat-button (click)="openAddFlightDialog()">Dodaj lot</button>
+<input type="text" placeholder="Szukaj..." (input)="onGridQuickFilterChanged($event)">
 <ag-grid-angular
   style="width: 100%; height: 400px;"
   class="ag-theme-alpine"
