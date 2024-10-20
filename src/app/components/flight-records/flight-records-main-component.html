@@ -17,6 +17,15 @@
   </mat-card-content>
 </mat-card>
 
-<div *ngIf="showRecordsGrid">
 
-</div>
+<button mat-button (click)="openAddFlightRecordDialog()">Dodaj gołębia</button>
+<input type="text" placeholder="Szukaj..." (input)="onGridQuickFilterChanged($event)">
+<ag-grid-angular
+  style="width: 80%; height: 80%"
+  class="ag-theme-alpine"
+  [rowData]="flightRecords"
+  [columnDefs]="columnDefs"
+  [quickFilterText]="gridQuickFilter"
+>
+</ag-grid-angular>
+
