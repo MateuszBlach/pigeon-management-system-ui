@@ -14,6 +14,7 @@ import {AgGridAngular} from "ag-grid-angular";
 import {ColDef} from "ag-grid-community";
 import {MatDialog} from "@angular/material/dialog";
 import {AddFlightRecordComponent} from "./add-flight-record/add-flight-record.component";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -63,11 +64,15 @@ export class FlightRecordsMainComponent implements OnInit{
     private authService: AuthService,
     private flightService: FlightService,
     private flightRecordService: FlightRecordService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.loadFlights()
+    if(this.route.snapshot.queryParams['id']){
+      this.loadFlightRecords(this.route.snapshot.queryParams['id']);
+    }
   }
 
   private loadFlights(): void {

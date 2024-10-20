@@ -7,6 +7,7 @@ import {ColDef} from "ag-grid-community";
 import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {AddFlightComponent} from "./add-flight/add-flight.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -31,6 +32,7 @@ export class FlightMainPageComponent implements OnInit{
         return `
           <button mat-button class="edit-btn">Edytuj</button>
           <button mat-button class="delete-btn">Usuń</button>
+          <button mat-button class="redirect-btn">Wyświetl wyniki</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
@@ -46,7 +48,8 @@ export class FlightMainPageComponent implements OnInit{
   constructor(
     private flightService:FlightService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -72,6 +75,11 @@ export class FlightMainPageComponent implements OnInit{
       this.editFlight(rowData);
     } else if (clickedElement.classList.contains('delete-btn')) {
       this.deleteFLight(rowData);
+    } else if (clickedElement.classList.contains('redirect-btn')) {
+      this.router.navigate(
+        ["flight-records"],
+        { queryParams: { id: rowData.id }}
+        )
     }
   }
 
