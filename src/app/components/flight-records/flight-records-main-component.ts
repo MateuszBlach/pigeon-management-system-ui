@@ -72,6 +72,7 @@ export class FlightRecordsMainComponent implements OnInit{
     this.loadFlights()
     if(this.route.snapshot.queryParams['id']){
       this.loadFlightRecords(this.route.snapshot.queryParams['id']);
+      this.selectedFlight.id = this.route.snapshot.queryParams['id'];
     }
   }
 

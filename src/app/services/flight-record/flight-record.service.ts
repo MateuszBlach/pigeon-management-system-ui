@@ -17,6 +17,10 @@ export class FlightRecordService {
     return this.http.request<FlightRecordDTO[]>('GET',`${this.url}/${flightId}/all`);
   }
 
+  getFlightRecordsByRing(ring: string): Observable<FlightRecordDTO[]> {
+    return this.http.request<FlightRecordDTO[]>("GET",`${this.url}/${ring}/all-by-ring`);
+  }
+
   addFlightRecord(flightRecordDTO: FlightRecordDTO): Observable<FlightRecordDTO> {
     return this.http.request<FlightRecordDTO>('POST',`${this.url}/add`,flightRecordDTO);
   }

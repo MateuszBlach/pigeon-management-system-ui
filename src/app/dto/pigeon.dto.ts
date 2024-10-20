@@ -1,6 +1,6 @@
 export interface PigeonDTO {
   ring: string;
-  gender: string;
-  color: string;
-  userId: number;
+  gender?: string;
+  color?: string;
+  userId?: number;
 }

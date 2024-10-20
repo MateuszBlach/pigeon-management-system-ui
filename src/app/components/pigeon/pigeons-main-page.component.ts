@@ -6,7 +6,8 @@ import { AddPigeonComponent } from "./add-pigeon/add-pigeon.component";
 import { AgGridAngular } from "ag-grid-angular";
 import { ColDef } from "ag-grid-community";
 import {MatDialog} from "@angular/material/dialog";
-import {MatButton} from "@angular/material/button"; // Import ColDef
+import {MatButton} from "@angular/material/button";
+import {Router} from "@angular/router"; // Import ColDef
 
 @Component({
   selector: "pigeon",
@@ -31,6 +32,7 @@ export class PigeonsMainPageComponent implements OnInit {
         return `
           <button mat-button class="edit-btn">Edytuj</button>
           <button mat-button class="delete-btn">Usuń</button>
+          <button mat-button class="redirect-btn">Wyświetl wyniki</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
@@ -43,7 +45,8 @@ export class PigeonsMainPageComponent implements OnInit {
   constructor(
     private pigeonService: PigeonService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   getGenderCellStyle(params: any): any {
@@ -141,6 +144,8 @@ export class PigeonsMainPageComponent implements OnInit {
       this.editPigeon(rowData);
     } else if (clickedElement.classList.contains('delete-btn')) {
       this.deletePigeon(rowData);
+    } else if (clickedElement.classList.contains('redirect-btn')) {
+      this.router.navigate(['pigeon-results'], { queryParams: { ring: rowData.ring } });
     }
   }
 

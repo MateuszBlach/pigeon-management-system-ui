@@ -6,11 +6,13 @@ import { NgModule } from "@angular/core";
 import { PigeonsMainPageComponent } from "./components/pigeon/pigeons-main-page.component";
 import {FlightMainPageComponent} from "./components/flights/flight-main-page.component";
 import {FlightRecordsMainComponent} from "./components/flight-records/flight-records-main-component";
+import {PigeonResultsComponent} from "./components/pigeon-results/pigeon-results.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pigeon', component: PigeonsMainPageComponent, canActivate: [AuthGuard] },
+  { path: 'pigeon-results', component: PigeonResultsComponent, canActivate: [AuthGuard] },
   { path: 'flights', component: FlightMainPageComponent, canActivate: [AuthGuard] },
   { path: 'flight-records', component: FlightRecordsMainComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
