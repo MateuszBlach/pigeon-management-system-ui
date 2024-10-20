@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {PigeonDTO} from "../../dto/pigeon.dto";
 import {PigeonService} from "../../services/pigeon/pigeon.service";
 import {FlightRecordService} from "../../services/flight-record/flight-record.service";
-import {FlightRecordDTO} from "../../dto/flight-record.dto";
 import {AuthService} from "../../services/auth/auth.service";
 import {CommonModule} from "@angular/common";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
@@ -10,8 +9,8 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
-import {AgGridAngular} from "ag-grid-angular";
 import {ActivatedRoute} from "@angular/router";
+import {PigeonResultDTO} from "../../dto/pigeon-results.dto";
 
 
 @Component({
@@ -34,7 +33,7 @@ export class PigeonResultsComponent implements OnInit {
 
   pigeons: PigeonDTO[] = [];
   selectedPigeon!: PigeonDTO;
-  records: FlightRecordDTO[] = []
+  records: PigeonResultDTO[] = []
 
   recordsLoaded: boolean = false;
 

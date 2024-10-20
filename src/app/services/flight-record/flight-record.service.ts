@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {FlightRecordDTO} from "../../dto/flight-record.dto";
 import {HttpService} from "../http/http.service";
 import {Injectable} from "@angular/core";
+import {PigeonResultDTO} from "../../dto/pigeon-results.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class FlightRecordService {
     return this.http.request<FlightRecordDTO[]>('GET',`${this.url}/${flightId}/all`);
   }
 
-  getFlightRecordsByRing(ring: string): Observable<FlightRecordDTO[]> {
-    return this.http.request<FlightRecordDTO[]>("GET",`${this.url}/${ring}/all-by-ring`);
+  getFlightRecordsByRing(ring: string): Observable<PigeonResultDTO[]> {
+    return this.http.request<PigeonResultDTO[]>("GET",`${this.url}/${ring}/all-by-ring`);
   }
 
   addFlightRecord(flightRecordDTO: FlightRecordDTO): Observable<FlightRecordDTO> {
