@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from "./services/auth/auth.service";
-import { NgIf } from "@angular/common";
-import { UserDTO } from "./dto/user.dto";
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf],
+  imports: [RouterOutlet, NgIf, NgClass],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
 
   loggedIn: boolean = false;
+  lastClickedButton: string = '';
   currentYear: number = 0;
 
   constructor(public authService: AuthService, private router: Router) {}
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit{
   }
 
   navigate(route: string) {
+    this.lastClickedButton = route;
     this.router.navigate([route]);
   }
 

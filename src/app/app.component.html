@@ -1,11 +1,26 @@
 <div *ngIf="loggedIn">
   <div class="nav-bar">
-    <button class="nav-button" (click)="navigate('pigeon')">Gołębie</button>
-    <button class="nav-button" (click)="navigate('pigeon-results')">Wyniki gołębi</button>
-    <button class="nav-button" (click)="navigate('flights')">Loty</button>
-    <button class="nav-button" (click)="navigate('flight-records')">Wyniki lotów</button>
-    <button class="nav-button" (click)="logout()">Wyloguj się</button>
+    <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'pigeon'}"
+            (click)="navigate('pigeon')">Gołębie</button>
+
+    <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'pigeon-results'}"
+            (click)="navigate('pigeon-results')">Wyniki gołębi</button>
+
+    <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'flights'}"
+            (click)="navigate('flights')">Loty</button>
+
+    <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'flight-records'}"
+            (click)="navigate('flight-records')">Wyniki lotów</button>
+
+    <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'logout'}"
+            (click)="logout()">Wyloguj się</button>
   </div>
+
 </div>
 
 <router-outlet></router-outlet>

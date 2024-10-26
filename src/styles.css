@@ -125,3 +125,6 @@ router-outlet {
   border-top: 1px solid #ddd;
 }
 
+.active-button {
+  background-color: indianred;
+}
