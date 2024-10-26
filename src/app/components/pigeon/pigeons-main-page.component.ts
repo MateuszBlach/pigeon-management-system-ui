@@ -7,7 +7,7 @@ import { AgGridAngular } from "ag-grid-angular";
 import { ColDef } from "ag-grid-community";
 import {MatDialog} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
-import {Router} from "@angular/router"; // Import ColDef
+import {Router} from "@angular/router";
 
 @Component({
   selector: "pigeon",
@@ -28,18 +28,19 @@ export class PigeonsMainPageComponent implements OnInit {
     {
       headerName: 'Akcje',
       field: 'actions',
+      width: 270,
       cellRenderer: () => {
         return `
-          <button mat-button class="edit-btn">Edytuj</button>
-          <button mat-button class="delete-btn">Usuń</button>
-          <button mat-button class="redirect-btn">Wyświetl wyniki</button>
+          <button mat-button class="edit-btn grid-btn">Edytuj</button>
+          <button mat-button class="delete-btn grid-btn">Usuń</button>
+          <button mat-button class="redirect-btn grid-btn">Wyświetl wyniki</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
     },
-    {headerName: 'Numer obrączki', field: 'ring'},
-    {headerName: 'Płeć', field: 'gender',  cellStyle: this.getGenderCellStyle},
-    {headerName: 'Barwa', field: 'color', cellStyle: this.getColorCellStyle},
+    {headerName: 'Numer obrączki', field: 'ring', width: 220},
+    {headerName: 'Płeć', field: 'gender',  cellStyle: this.getGenderCellStyle, width: 200},
+    {headerName: 'Barwa', field: 'color', cellStyle: this.getColorCellStyle, width: 220},
   ];
 
   constructor(

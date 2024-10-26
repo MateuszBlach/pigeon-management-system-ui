@@ -1,11 +1,12 @@
+<div class="items-center">
 <button mat-button (click)="openAddPigeonDialog()">Dodaj gołębia</button>
 <input type="text" placeholder="Szukaj..." (input)="onGridQuickFilterChanged($event)">
 <ag-grid-angular
-  style="width: 80%; height: 80%"
+  style="width: 914px; height: 600px"
   class="ag-theme-alpine"
   [rowData]="pigeons"
   [columnDefs]="columnDefs"
   [quickFilterText]="gridQuickFilter"
-  >
+>
 </ag-grid-angular>
-
+</div>
