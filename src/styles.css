@@ -119,3 +119,14 @@ form {
 .user-info {
   margin-left: auto;
 }
+
+.above-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.router-outlet-overlay {
+  min-height: calc(100vh - 140px);
+}
