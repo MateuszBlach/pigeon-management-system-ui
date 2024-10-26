@@ -30,6 +30,7 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
+
   getLoggedUserId(): number {
     const user = this.localStorageService.getLoggedInUser()
     if(user){
