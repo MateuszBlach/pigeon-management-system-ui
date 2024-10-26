@@ -37,12 +37,15 @@ export class RegisterComponent {
     this.userService.register(this.user).subscribe(
       response => {
         console.log('Registration successful', response);
-        this.authService.setLoggedInUser(response);
-        this.router.navigate(['/pigeon']);
+        this.router.navigate(['/login']);
       },
       error => {
         console.error('Registration failed', error);
       }
     );
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="loggedIn; else loginTemplate">
+<div *ngIf="loggedIn">
   <div class="nav-bar">
     <button class="nav-button" (click)="navigate('pigeon')">Gołębie</button>
     <button class="nav-button" (click)="navigate('pigeon-results')">Wyniki gołębi</button>
@@ -8,11 +8,8 @@
   </div>
 </div>
 
-<ng-template #loginTemplate>
-  <div class="nav-bar">
-    <button class="nav-button" (click)="navigate('login')">Logowanie</button>
-    <button class="nav-button" (click)="navigate('register')">Rejestracja</button>
-  </div>
-</ng-template>
-
 <router-outlet></router-outlet>
+
+<div *ngIf="loggedIn" class="footer">
+  <p>Moja Hodowla &copy; {{ currentYear }} </p>
+</div>

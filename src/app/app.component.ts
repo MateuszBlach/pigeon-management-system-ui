@@ -14,10 +14,12 @@ import { UserDTO } from "./dto/user.dto";
 export class AppComponent implements OnInit{
 
   loggedIn: boolean = false;
+  currentYear: number = 0;
 
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+    this.currentYear = new Date().getFullYear();
     this.authService.isLoggedIn().subscribe((status: boolean) => {
       this.loggedIn = status;
     });
@@ -32,4 +34,5 @@ export class AppComponent implements OnInit{
     this.router.navigate([route]);
   }
 
+  protected readonly Date = Date;
 }
