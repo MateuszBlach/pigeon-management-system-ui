@@ -11,6 +11,8 @@ import {FormsModule} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {ActivatedRoute} from "@angular/router";
 import {PigeonResultDTO} from "../../dto/pigeon-results.dto";
+import {AgGridAngular} from "ag-grid-angular";
+import {ColDef} from "ag-grid-community";
 
 
 @Component({
@@ -25,7 +27,8 @@ import {PigeonResultDTO} from "../../dto/pigeon-results.dto";
     MatSelect,
     MatOption,
     FormsModule,
-    MatButton
+    MatButton,
+    AgGridAngular
   ],
   templateUrl: "./pigeon-results.component.html",
 })
@@ -36,6 +39,15 @@ export class PigeonResultsComponent implements OnInit {
   records: PigeonResultDTO[] = []
 
   recordsLoaded: boolean = false;
+
+  columnDefs: ColDef[] = [
+    { headerName: 'Miasto',field: 'city'},
+    { headerName: 'Data',field: 'flightDate'},
+    { headerName: 'Coefic',field: 'coefic'},
+    { headerName: 'Punkty',field: 'points'},
+    { headerName: 'Dystans',field: 'flightRecordDistance'},
+  ]
+
 
   constructor(
     private authService: AuthService,
