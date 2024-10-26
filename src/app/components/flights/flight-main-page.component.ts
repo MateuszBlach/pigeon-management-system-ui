@@ -86,8 +86,8 @@ export class FlightMainPageComponent implements OnInit{
 
   private editFlight(flight: FlightDTO): void {
     this.dialog.open(AddFlightComponent, {
-      width: '250px',
-      height: '600px',
+      width: '300px',
+      height: '560px',
       data: {
         mode: "edit",
         flight: flight
@@ -120,8 +120,8 @@ export class FlightMainPageComponent implements OnInit{
 
   openAddFlightDialog() {
     this.dialog.open(AddFlightComponent, {
-      width: '250px',
-      height: '600px',
+      width: '300px',
+      height: '560px',
       data: {
         mode: "add",
         flight: {}

@@ -1,32 +1,32 @@
 <div class="items-center">
-<mat-card>
-  <mat-card-title>Wybierz gołębia</mat-card-title>
-  <mat-card-content>
-    <form #form="ngForm" (ngSubmit)="submitForm()">
-      <mat-form-field appearance="fill">
-        <mat-label>Numer obrączki
-        </mat-label>
-        <mat-select id="pigeon" [(ngModel)]="selectedPigeon" name ="pigeon" required>
-          <mat-option *ngFor="let pigeon of pigeons" [value]="pigeon">
-            {{ pigeon.ring }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="form-button-container">
-        <button mat-flat-button [disabled]="!form.valid" type="submit">Wyświetl wyniki</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+  <mat-card class="selector">
+    <mat-card-title>Wybierz gołębia</mat-card-title>
+    <mat-card-content>
+      <form #form="ngForm" (ngSubmit)="submitForm()">
+        <mat-form-field appearance="fill">
+          <mat-label>Numer obrączki
+          </mat-label>
+          <mat-select id="pigeon" [(ngModel)]="selectedPigeon" name="pigeon" required>
+            <mat-option *ngFor="let pigeon of pigeons" [value]="pigeon">
+              {{ pigeon.ring }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-button-container">
+          <button mat-flat-button [disabled]="!form.valid" type="submit">Wyświetl wyniki</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 
-<div *ngIf="this.recordsLoaded">
-  <h4>Wyniki dla gołębia o numerze obrączki: {{this.selectedPigeon.ring}}</h4>
-</div>
-<ag-grid-angular
-  style="width: 600px; height: 700px"
-  class="ag-theme-alpine"
-  [rowData]="records"
-  [columnDefs]="columnDefs"
->
-</ag-grid-angular>
+  <div *ngIf="this.recordsLoaded">
+    <h4>Wyniki dla gołębia o numerze obrączki: {{ this.selectedPigeon.ring }}</h4>
+  </div>
+  <ag-grid-angular
+    style="width: 600px; height: 700px"
+    class="ag-theme-alpine"
+    [rowData]="records"
+    [columnDefs]="columnDefs"
+  >
+  </ag-grid-angular>
 </div>

@@ -52,8 +52,8 @@ export class PigeonsMainPageComponent implements OnInit {
 
   openAddPigeonDialog() {
     this.dialog.open(AddPigeonComponent, {
-      width: '250px',
-      height: '500px',
+      width: '300px',
+      height: '400px',
       data: {
         mode: "add",
         pigeon: {}
@@ -96,8 +96,8 @@ export class PigeonsMainPageComponent implements OnInit {
 
   editPigeon(pigeon: PigeonDTO): void {
     this.dialog.open(AddPigeonComponent, {
-      width: '250px',
-      height: '500px',
+      width: '300px',
+      height: '400px',
       data: {
         mode: "edit",
         pigeon: pigeon

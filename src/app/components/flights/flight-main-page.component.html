@@ -1,12 +1,14 @@
 <div class="items-center">
-<button mat-button (click)="openAddFlightDialog()">Dodaj lot</button>
-<input type="text" placeholder="Szukaj..." (input)="onGridQuickFilterChanged($event)">
-<ag-grid-angular
-  style="width: 1165px; height: 700px"
-  class="ag-theme-alpine"
-  [rowData]="flights"
-  [columnDefs]="columnDefs"
-  [quickFilterText]="gridQuickFilter"
->
-</ag-grid-angular>
+  <div style="width: 1165px" class="above-grid">
+    <button mat-flat-button (click)="openAddFlightDialog()">Dodaj lot</button>
+    <input type="text" placeholder="Wyszukaj lotu..." (input)="onGridQuickFilterChanged($event)">
+  </div>
+  <ag-grid-angular
+    style="width: 1165px; height: 700px"
+    class="ag-theme-alpine"
+    [rowData]="flights"
+    [columnDefs]="columnDefs"
+    [quickFilterText]="gridQuickFilter"
+  >
+  </ag-grid-angular>
 </div>
