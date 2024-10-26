@@ -28,21 +28,22 @@ export class FlightMainPageComponent implements OnInit{
     {
       headerName: 'Akcje',
       field: 'actions',
+      width: 270,
       cellRenderer: () => {
         return `
-          <button mat-button class="edit-btn">Edytuj</button>
-          <button mat-button class="delete-btn">Usuń</button>
-          <button mat-button class="redirect-btn">Wyświetl wyniki</button>
+          <button mat-button class="edit-btn grid-btn">Edytuj</button>
+          <button mat-button class="delete-btn grid-btn">Usuń</button>
+          <button mat-button class="redirect-btn grid-btn">Wyświetl wyniki</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
     },
-    {headerName: 'Miasto', field: 'city'},
-    {headerName: 'Dystans [km]', field: 'distance'},
-    {headerName: 'Data', field: 'date'},
-    {headerName: 'Pogoda', field: 'weather'},
-    {headerName: 'Kierunek wiatru', field: 'windDirection'},
-    {headerName: 'Prędkość wiatru [km/h]', field: 'windSpeed'},
+    {headerName: 'Miasto', field: 'city', width: 120},
+    {headerName: 'Dystans [km]', field: 'distance', width: 150},
+    {headerName: 'Data', field: 'date', width: 120},
+    {headerName: 'Pogoda', field: 'weather', width: 120},
+    {headerName: 'Kierunek wiatru', field: 'windDirection', width: 185},
+    {headerName: 'Prędkość wiatru [km/h]', field: 'windSpeed', width: 195},
   ]
 
   constructor(
