@@ -41,11 +41,11 @@ export class PigeonResultsComponent implements OnInit {
   recordsLoaded: boolean = false;
 
   columnDefs: ColDef[] = [
-    { headerName: 'Miasto',field: 'city'},
-    { headerName: 'Data',field: 'flightDate'},
-    { headerName: 'Coefic',field: 'coefic'},
-    { headerName: 'Punkty',field: 'points'},
-    { headerName: 'Dystans',field: 'flightRecordDistance'},
+    { headerName: 'Miasto',field: 'city', width: 120},
+    { headerName: 'Data',field: 'flightDate', width: 120},
+    { headerName: 'Coefic',field: 'coefic', width: 100},
+    { headerName: 'Punkty',field: 'points', width: 100},
+    { headerName: 'Dystans [km]',field: 'flightRecordDistance', width: 150},
   ]
 
 

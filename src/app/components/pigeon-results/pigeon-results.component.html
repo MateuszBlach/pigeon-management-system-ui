@@ -1,3 +1,4 @@
+<div class="items-center">
 <mat-card>
   <mat-card-title>Wybierz gołębia</mat-card-title>
   <mat-card-content>
@@ -19,12 +20,13 @@
 </mat-card>
 
 <div *ngIf="this.recordsLoaded">
-  <h2>Najlepsze wyniki dla gołębia o numerze obrączki: {{this.selectedPigeon.ring}}</h2>
+  <h4>Wyniki dla gołębia o numerze obrączki: {{this.selectedPigeon.ring}}</h4>
 </div>
 <ag-grid-angular
-  style="width: 80%; height: 80%"
+  style="width: 600px; height: 700px"
   class="ag-theme-alpine"
   [rowData]="records"
   [columnDefs]="columnDefs"
 >
 </ag-grid-angular>
+</div>

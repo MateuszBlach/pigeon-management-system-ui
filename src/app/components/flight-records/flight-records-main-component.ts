@@ -45,18 +45,19 @@ export class FlightRecordsMainComponent implements OnInit{
     {
       headerName: 'Akcje',
       field: 'actions',
+      width: 170,
       cellRenderer: () => {
         return `
-          <button mat-button class="edit-btn">Edytuj</button>
-          <button mat-button class="delete-btn">Usuń</button>
+          <button mat-button class="edit-btn grid-btn">Edytuj</button>
+          <button mat-button class="delete-btn grid-btn">Usuń</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
     },
-    {headerName: 'Numer obrączki', field: 'pigeonRing'},
-    {headerName: 'Dystans [km]', field: 'distance'},
-    {headerName: 'Coefic', field: 'coefic'},
-    {headerName: 'Punkty', field: 'points'}
+    {headerName: 'Numer obrączki', field: 'pigeonRing', width: 220},
+    {headerName: 'Dystans [km]', field: 'distance', width: 180},
+    {headerName: 'Coefic', field: 'coefic',width: 100},
+    {headerName: 'Punkty', field: 'points',width: 100}
   ]
   gridQuickFilter: string = '';
 

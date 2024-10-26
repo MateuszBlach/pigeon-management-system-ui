@@ -1,3 +1,4 @@
+<div class="items-center">
 <mat-card>
   <mat-card-title>Wybierz lot</mat-card-title>
   <mat-card-content>
@@ -18,14 +19,14 @@
 </mat-card>
 
 
-<button mat-button (click)="openAddFlightRecordDialog()">Dodaj gołębia</button>
+<button mat-button (click)="openAddFlightRecordDialog()">Dodaj wynik lotu</button>
 <input type="text" placeholder="Szukaj..." (input)="onGridQuickFilterChanged($event)">
 <ag-grid-angular
-  style="width: 80%; height: 80%"
+  style="width: 780px; height: 700px"
   class="ag-theme-alpine"
   [rowData]="flightRecords"
   [columnDefs]="columnDefs"
   [quickFilterText]="gridQuickFilter"
 >
 </ag-grid-angular>
-
+</div>
