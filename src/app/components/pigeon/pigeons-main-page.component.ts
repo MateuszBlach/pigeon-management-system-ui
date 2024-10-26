@@ -39,8 +39,8 @@ export class PigeonsMainPageComponent implements OnInit {
       onCellClicked: (params) => this.handleActionClick(params)
     },
     {headerName: 'Numer obrączki', field: 'ring', width: 220},
-    {headerName: 'Płeć', field: 'gender',  cellStyle: this.getGenderCellStyle, width: 200},
-    {headerName: 'Barwa', field: 'color', cellStyle: this.getColorCellStyle, width: 220},
+    {headerName: 'Płeć', field: 'gender', width: 200},
+    {headerName: 'Barwa', field: 'color', width: 220},
   ];
 
   constructor(
@@ -49,62 +49,6 @@ export class PigeonsMainPageComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router
   ) {}
-
-  getGenderCellStyle(params: any): any {
-    if (params.value === "Samiec") {
-      return { backgroundColor: 'lightblue' };
-    } else if (params.value === "Samica") {
-      return { backgroundColor: 'pink' };
-    }
-    return null;
-  }
-
-  getColorCellStyle(params: any): any {
-    switch (params.value) {
-      case 'Niebieska':
-        return { backgroundColor: '#87CEEB' };
-      case 'Niebieska nakrapiana':
-        return { backgroundColor: '#ADD8E6' };
-      case 'Ciemna nakrapiana':
-        return { backgroundColor: '#778899' };
-      case 'Ciemna':
-        return { backgroundColor: '#2F4F4F' };
-      case 'Czarna':
-        return { backgroundColor: '#000000' };
-      case 'Czerwona nakrapiana':
-        return { backgroundColor: '#FF6347' };
-      case 'Czerwona':
-        return { backgroundColor: '#FF4500' };
-      case 'Płowa':
-        return { backgroundColor: '#FFD700' };
-      case 'Biała':
-        return { backgroundColor: '#FFFFFF' };
-      case 'Szpakowata':
-        return { backgroundColor: '#DCDCDC' };
-      case 'Niebieska pstra':
-        return { backgroundColor: '#B0E0E6' };
-      case 'Niebieska nakrapiana pstra':
-        return { backgroundColor: '#AFEEEE' };
-      case 'Ciemna nakrapiana pstra':
-        return { backgroundColor: '#708090' };
-      case 'Ciemna pstra':
-        return { backgroundColor: '#2E8B57' };
-      case 'Czarna pstra':
-        return { backgroundColor: '#696969' };
-      case 'Czerwona nakrapiana pstra':
-        return { backgroundColor: '#CD5C5C' };
-      case 'Czerwona pstra':
-        return { backgroundColor: '#DC143C' };
-      case 'Płowa pstra':
-        return { backgroundColor: '#DAA520' };
-      case 'Szpakowata pstra':
-        return { backgroundColor: '#A9A9A9' };
-      case 'Czerwona szpakowata':
-        return { backgroundColor: '#B22222' };
-      default:
-        return null;
-    }
-  }
 
   openAddPigeonDialog() {
     this.dialog.open(AddPigeonComponent, {
