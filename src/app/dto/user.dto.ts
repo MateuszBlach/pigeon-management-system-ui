@@ -5,4 +5,5 @@ export interface UserDTO {
   birthdate?: Date;
   password?: string;
   email?: string;
+  token?: string;
 }

@@ -3,47 +3,56 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import { UserDTO } from "../../dto/user.dto";
 import { backend } from "../../shared/application-constans";
 import { HttpService } from '../http/http.service';
-import { AuthTokenService } from '../auth-token/auth-token.service';
+import {LocalStorageService} from "../local-storage/local-storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = backend.userUrl;
   private loggedIn = new BehaviorSubject<boolean>(false);
-  public loggedInUser: UserDTO | null = null;
 
-  constructor(private httpService: HttpService, private authTokenService: AuthTokenService) { }
-
-  login(user: UserDTO): Observable<any> {
-    return this.httpService.request<any>('POST', `${this.url}/login`, user);
+  constructor(private localStorageService: LocalStorageService) {
+    this.initializeAuthState()
   }
 
-  register(user: UserDTO): Observable<any> {
-    return this.httpService.request<any>('POST', `${this.url}/register`, user);
+  private initializeAuthState(): void {
+    if(this.localStorageService.getLoggedInUser() !== null) {
+      this.loggedIn.next(true);
+    }
   }
-
 
   logout(): void {
-    this.loggedIn.next(false)
-    this.loggedInUser = null;
-    this.authTokenService.setAuthToken(null);
+    this.setLoggedInUser(null);
   }
 
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
 
-  getLoggedUserId():number {
-    if (this.loggedInUser && this.loggedInUser.id) {
-      return this.loggedInUser.id;
+  getLoggedUserId(): number {
+    const user = this.localStorageService.getLoggedInUser()
+    if(user){
+      return user.id as number;
     }
-    return -1;
+    return -1
   }
 
-  setLoggedInUser(user: UserDTO): void {
-    this.loggedIn.next(true);
-    this.loggedInUser = user;
+  getToken(): string | null {
+    const user = this.localStorageService.getLoggedInUser();
+    if(user){
+      return user.token as string;
+    }
+    return null;
   }
+
+  setLoggedInUser(user: UserDTO | null): void {
+    if (user !== null) {
+      this.loggedIn.next(true);
+    } else {
+      this.loggedIn.next(false);
+    }
+    this.localStorageService.setLoggedInUser(user)
+  }
+
 }

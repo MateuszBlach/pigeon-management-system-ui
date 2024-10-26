@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import {UserDTO} from "../../dto/user.dto";
-import {AuthTokenService} from "../../services/auth-token/auth-token.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-login',
@@ -25,12 +25,11 @@ export class LoginComponent {
 
   user: UserDTO =  {};
 
-  constructor(private authService: AuthService, private router: Router, private authTokenService: AuthTokenService) {}
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
 
   login() {
-    this.authService.login(this.user).subscribe(
+    this.userService.login(this.user).subscribe(
       response => {
-        this.authTokenService.setAuthToken(response.token)
         this.authService.setLoggedInUser(response);
         this.router.navigate(['/pigeon']);
       },

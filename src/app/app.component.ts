@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.authService.isLoggedIn().subscribe((status: boolean) => {
       this.loggedIn = status;
-      console.log(this.loggedIn);
     });
   }
 
