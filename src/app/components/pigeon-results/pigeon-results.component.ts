@@ -13,6 +13,8 @@ import {ActivatedRoute} from "@angular/router";
 import {PigeonResultDTO} from "../../dto/pigeon-results.dto";
 import {AgGridAngular} from "ag-grid-angular";
 import {ColDef} from "ag-grid-community";
+import {AlertService} from "../../services/alert/alert.service";
+import {AlertType} from "../../models/alert.model";
 
 
 @Component({
@@ -53,7 +55,8 @@ export class PigeonResultsComponent implements OnInit {
     private authService: AuthService,
     private pigeonService: PigeonService,
     private flightRecordsService: FlightRecordService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService
   ) {
   }
 
@@ -71,6 +74,12 @@ export class PigeonResultsComponent implements OnInit {
     this.pigeonService.getPigeons(this.authService.getLoggedUserId()).subscribe(
       response => {
         this.pigeons = response;
+        if(this.pigeons.length === 0){
+          this.alertService.showAlert(AlertType.Warning, "Nie posiadasz żadnych gołębi.")
+        }
+      },
+      error => {
+        this.alertService.showAlert(AlertType.Error, "Nie udało się załadować gołębi.")
       }
     )
   }
@@ -80,6 +89,12 @@ export class PigeonResultsComponent implements OnInit {
       response => {
         this.records = response;
         this.recordsLoaded = true
+        if(this.records.length === 0){
+          this.alertService.showAlert(AlertType.Warning, "Ten gołąb nie posiada żadnych zapisanych wyników.")
+        }
+      },
+      error => {
+        this.alertService.showAlert(AlertType.Error, "Nie udało się załadować wyników.")
       }
     )
   }

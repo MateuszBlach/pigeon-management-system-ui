@@ -9,6 +9,8 @@ import {PigeonService} from "../../../services/pigeon/pigeon.service";
 import {AuthService} from "../../../services/auth/auth.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {AlertService} from "../../../services/alert/alert.service";
+import {AlertType} from "../../../models/alert.model";
 
 @Component({
   standalone: true,
@@ -35,6 +37,7 @@ export class AddPigeonComponent {
     private pigeonService: PigeonService,
     private authService: AuthService,
     private dialogRef: MatDialogRef<AddPigeonComponent>,
+    private alertService: AlertService,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.mode = data.mode;
@@ -57,7 +60,7 @@ export class AddPigeonComponent {
       },
       error => {
         this.dialogRef.close(false);
-        console.log(error)
+        this.alertService.showAlert(AlertType.Error, "Nie udało się dodać nowego gołębia.")
       }
     )
   }
@@ -69,7 +72,7 @@ export class AddPigeonComponent {
       },
       error => {
         this.dialogRef.close(false);
-        console.log(error)
+        this.alertService.showAlert(AlertType.Error, "Nie udało się edytować danych gołębia.")
       }
     )
   }

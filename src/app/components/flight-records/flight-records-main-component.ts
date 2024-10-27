@@ -15,6 +15,8 @@ import {ColDef} from "ag-grid-community";
 import {MatDialog} from "@angular/material/dialog";
 import {AddFlightRecordComponent} from "./add-flight-record/add-flight-record.component";
 import {ActivatedRoute} from "@angular/router";
+import {AlertService} from "../../services/alert/alert.service";
+import {AlertType} from "../../models/alert.model";
 
 
 @Component({
@@ -66,7 +68,8 @@ export class FlightRecordsMainComponent implements OnInit{
     private flightService: FlightService,
     private flightRecordService: FlightRecordService,
     private dialog: MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService,
   ) {}
 
   ngOnInit(): void {
@@ -81,6 +84,9 @@ export class FlightRecordsMainComponent implements OnInit{
     this.flightService.getAllFlights(this.authService.getLoggedUserId()).subscribe(
       response => {
         this.flights = response;
+        if(this.flights.length === 0) {
+          this.alertService.showAlert(AlertType.Warning,"Nie masz jeszcze żadnych lotów.")
+        }
       }
     )
   }
@@ -89,6 +95,9 @@ export class FlightRecordsMainComponent implements OnInit{
     this.flightRecordService.getFlightRecords(flightId).subscribe(
       response => {
         this.flightRecords = response;
+        if(this.flightRecords.length === 0) {
+          this.alertService.showAlert(AlertType.Warning,"Nie masz jeszcze żadnych wyników dla tego lotu.")
+        }
       }
     )
   }
@@ -109,6 +118,7 @@ export class FlightRecordsMainComponent implements OnInit{
     })
       .afterClosed().subscribe((result: boolean) => {
       if (result) {
+        this.alertService.showAlert(AlertType.Success, `Pomyślnie dodano wynik lotu.`)
         this.loadFlightRecords(this.selectedFlight.id);
       }
     })
@@ -141,6 +151,7 @@ export class FlightRecordsMainComponent implements OnInit{
     })
       .afterClosed().subscribe((result: boolean) => {
       if (result) {
+        this.alertService.showAlert(AlertType.Success, `Pomyślnie edytowano wynik lotu.`)
         this.loadFlightRecords(this.selectedFlight.id);
       }
     });
@@ -150,6 +161,10 @@ export class FlightRecordsMainComponent implements OnInit{
     this.flightRecordService.deleteFlightRecord(flightRecordId).subscribe(
       response => {
         this.loadFlightRecords(this.selectedFlight.id);
+        this.alertService.showAlert(AlertType.Success, 'Pomyślnie usunięto wynik lotu.')
+      },
+      error => {
+        this.alertService.showAlert(AlertType.Success, 'Nie udało się usunąć wynik lotu.')
       }
     )
   }

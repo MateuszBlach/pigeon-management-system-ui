@@ -2,12 +2,14 @@ import {Component, OnInit} from "@angular/core";
 import {FlightService} from "../../services/flight/flight.service";
 import {FlightDTO} from "../../dto/flight.dto";
 import {AuthService} from "../../services/auth/auth.service";
-import { AgGridAngular } from "ag-grid-angular";
+import {AgGridAngular} from "ag-grid-angular";
 import {ColDef} from "ag-grid-community";
 import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {AddFlightComponent} from "./add-flight/add-flight.component";
 import {Router} from "@angular/router";
+import {AlertService} from "../../services/alert/alert.service";
+import {AlertType} from "../../models/alert.model";
 
 
 @Component({
@@ -50,7 +52,8 @@ export class FlightMainPageComponent implements OnInit{
     private flightService:FlightService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ){}
 
   ngOnInit(): void {
@@ -61,9 +64,12 @@ export class FlightMainPageComponent implements OnInit{
     this.flightService.getAllFlights(this.authService.getLoggedUserId()).subscribe(
       response => {
         this.flights = response;
+        if(this.flights.length === 0) {
+          this.alertService.showAlert(AlertType.Warning,"Nie masz jeszcze żadnych lotów.")
+        }
       },
       error => {
-        console.log(error);
+        this.alertService.showAlert(AlertType.Error, "Nie udało się pobrać lotów.")
       }
     )
   }
@@ -96,6 +102,7 @@ export class FlightMainPageComponent implements OnInit{
       .afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.loadFlights();
+        this.alertService.showAlert(AlertType.Success, `Pomyślnie edytowano lot.`)
       }
     });
   }
@@ -104,11 +111,11 @@ export class FlightMainPageComponent implements OnInit{
     if (confirm(`Czy ma pewno chcesz usunąć lot z miasta ${flight.city} ?`)) {
       this.flightService.deleteFlight(flight.id).subscribe(
         response => {
-          console.log(response)
           this.loadFlights();
+          this.alertService.showAlert(AlertType.Success, "Pomyślnie usunięto lot.")
         },
         error => {
-          console.log(error)
+          this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć lotu.")
         }
       )
     }
@@ -130,6 +137,7 @@ export class FlightMainPageComponent implements OnInit{
       .afterClosed().subscribe((result: boolean) => {
         if (result) {
           this.loadFlights();
+          this.alertService.showAlert(AlertType.Success, "Pomyślnie dodano nowy lot.")
         }
     })
   }

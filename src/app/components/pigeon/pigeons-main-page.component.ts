@@ -1,13 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { PigeonService } from "../../services/pigeon/pigeon.service";
-import { PigeonDTO } from "../../dto/pigeon.dto";
-import { AuthService } from "../../services/auth/auth.service";
-import { AddPigeonComponent } from "./add-pigeon/add-pigeon.component";
-import { AgGridAngular } from "ag-grid-angular";
-import { ColDef } from "ag-grid-community";
+import {Component, OnInit} from "@angular/core";
+import {PigeonService} from "../../services/pigeon/pigeon.service";
+import {PigeonDTO} from "../../dto/pigeon.dto";
+import {AuthService} from "../../services/auth/auth.service";
+import {AddPigeonComponent} from "./add-pigeon/add-pigeon.component";
+import {AgGridAngular} from "ag-grid-angular";
+import {ColDef} from "ag-grid-community";
 import {MatDialog} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {AlertService} from "../../services/alert/alert.service";
+import {AlertType} from "../../models/alert.model";
 
 @Component({
   selector: "pigeon",
@@ -47,7 +49,8 @@ export class PigeonsMainPageComponent implements OnInit {
     private pigeonService: PigeonService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   openAddPigeonDialog() {
@@ -62,6 +65,7 @@ export class PigeonsMainPageComponent implements OnInit {
     .afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.loadPigeons(this.authService.getLoggedUserId());
+        this.alertService.showAlert(AlertType.Success, "Pomyślnie dodano nowego gołębia.")
       }
     });
   }
@@ -74,9 +78,13 @@ export class PigeonsMainPageComponent implements OnInit {
     this.pigeonService.getPigeons(userId).subscribe(
       response => {
         this.pigeons = response;
+        if(this.pigeons.length === 0) {
+          this.alertService.showAlert(AlertType.Warning, "Nie posiadasz żadnych gołębi.")
+        }
       },
       error => {
         this.pigeons = [];
+        this.alertService.showAlert(AlertType.Error, "Nie udało się załadować gołębi.")
       }
     );
   }
@@ -106,6 +114,7 @@ export class PigeonsMainPageComponent implements OnInit {
       .afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.loadPigeons(this.authService.getLoggedUserId());
+        this.alertService.showAlert(AlertType.Success, "Pomyślnie edytowano dane gołębia.")
       }
     });
   }
@@ -115,11 +124,11 @@ export class PigeonsMainPageComponent implements OnInit {
     if (confirm(`Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`)) {
       this.pigeonService.deletePigeon(pigeon.ring).subscribe(
         response => {
-          console.log(response)
           this.loadPigeons(this.authService.getLoggedUserId());
+          this.alertService.showAlert(AlertType.Success,"Pomyślnie usunięto gołębia.")
         },
         error => {
-          console.log(error)
+          this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć gołębia.")
         }
       )
     }

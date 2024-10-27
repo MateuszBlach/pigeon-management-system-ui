@@ -11,6 +11,8 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {CommonModule} from "@angular/common";
 import {MatInput} from "@angular/material/input";
+import {AlertType} from "../../../models/alert.model";
+import {AlertService} from "../../../services/alert/alert.service";
 
 @Component({
   standalone: true,
@@ -40,6 +42,7 @@ export class AddFlightRecordComponent implements OnInit {
     private pigeonService: PigeonService,
     private authService: AuthService,
     private dialogRef: MatDialogRef<AddFlightRecordComponent>,
+    private alertService: AlertService,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.mode = data.mode;
@@ -75,7 +78,7 @@ export class AddFlightRecordComponent implements OnInit {
       },
       error => {
         this.dialogRef.close(false);
-        console.log(error);
+        this.alertService.showAlert(AlertType.Error, 'Nie udało się dodać nowego wyniku lotu.' )
       }
     );
   }
@@ -87,7 +90,7 @@ export class AddFlightRecordComponent implements OnInit {
       },
       error => {
         this.dialogRef.close(false);
-        console.log(error);
+        this.alertService.showAlert(AlertType.Error, 'Nie udało się edytować wyniku lotu.' )
       }
     );
   }
