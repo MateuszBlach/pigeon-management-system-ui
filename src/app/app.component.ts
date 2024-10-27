@@ -4,11 +4,12 @@ import { AuthService } from "./services/auth/auth.service";
 import {NgClass, NgIf} from "@angular/common";
 import {NavComponent} from "./components/nav/nav.component";
 import {FooterComponent} from "./components/footer/footer.component";
+import {AlertsComponent} from "./components/alerts/alerts.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgClass, NavComponent, FooterComponent],
+  imports: [RouterOutlet, NgIf, NgClass, NavComponent, FooterComponent, AlertsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
