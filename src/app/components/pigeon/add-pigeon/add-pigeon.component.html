@@ -1,4 +1,4 @@
-<mat-card class="form-card dialog-card">
+<mat-card class="form-card dialog-card pigeon-card">
   <mat-card-title>{{ mode == 'add' ? 'Dodaj nowego gołębia' : 'Edytuj gołębia'}}</mat-card-title>
   <mat-card-content>
     <form #form="ngForm" (ngSubmit)="submitForm()">
@@ -56,7 +56,7 @@
       </mat-form-field>
       <mat-form-field  appearance="fill" class="form-fullwidth">
         <mat-label>Opis</mat-label>
-        <textarea matInput id="description" [(ngModel)]="pigeon.description" name="description"></textarea>
+        <textarea matInput id="description" [(ngModel)]="pigeon.description" name="description" rows="5"></textarea>
       </mat-form-field>
       <div class="form-button-container">
         <button mat-flat-button [disabled]="!form.valid" type="submit">{{ mode == 'add' ? 'Dodaj' : 'Zapisz'}}</button>

@@ -164,3 +164,8 @@ form {
   cursor: pointer;
   color: inherit;
 }
+
+.pigeon-card {
+  max-width: 500px;
+  height: 700px;
+}
