@@ -10,6 +10,7 @@ import {AddFlightComponent} from "./add-flight/add-flight.component";
 import {Router} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
+import {MatCard, MatCardTitle} from "@angular/material/card";
 
 
 @Component({
@@ -18,6 +19,8 @@ import {AlertType} from "../../models/alert.model";
   imports: [
     AgGridAngular,
     MatButton,
+    MatCard,
+    MatCardTitle,
   ],
   templateUrl: "./flight-main-page.component.html"
 })
