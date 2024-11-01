@@ -1,3 +1,11 @@
+.overlay {
+  margin: 20px;
+}
+
+.tree-title{
+
+}
+
 .pigeon-selector {
   margin-bottom: 20px;
 }
@@ -21,11 +29,6 @@
   margin-top: 20px;
 }
 
-.ancestor-card {
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-}
-
 .pigeon-section {
   display: flex;
   gap: 20px;
@@ -36,7 +39,33 @@
   flex: 1;
 }
 
+.pigeon-selector {
+  max-width: 33.33%;
+}
+
+.pigeon-details {
+  max-width: 66.67%;
+}
+
 .details-card,
 .selector {
   width: 100%;
 }
+
+.tree-card {
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.pigeon-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pigeon-info-table th, .pigeon-info-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+
