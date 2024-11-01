@@ -29,6 +29,11 @@
   margin-top: 20px;
 }
 
+.grid-item mat-card {
+  min-height: 120px;
+  min-width: 190px;
+}
+
 .pigeon-section {
   display: flex;
   gap: 20px;
