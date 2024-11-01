@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -11,6 +11,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {AlertService} from "../../../services/alert/alert.service";
 import {AlertType} from "../../../models/alert.model";
+import {NgForOf} from "@angular/common";
 
 @Component({
   standalone: true,
@@ -24,13 +25,17 @@ import {AlertType} from "../../../models/alert.model";
     MatInput,
     MatButton,
     MatSelect,
-    MatOption
+    MatOption,
+    NgForOf
   ],
   templateUrl: './add-pigeon.component.html'
 })
-export class AddPigeonComponent {
+export class AddPigeonComponent implements OnInit{
 
   pigeon: PigeonDTO;
+  pigeons: PigeonDTO[] = [];
+  potentialFathers: PigeonDTO[] = [];
+  potentialMothers: PigeonDTO[] = [];
   mode: string = ''
 
   constructor(
@@ -42,6 +47,16 @@ export class AddPigeonComponent {
   ) {
     this.mode = data.mode;
     this.pigeon = data.pigeon;
+    this.pigeons = data.pigeons;
+  }
+
+  ngOnInit(): void {
+    this.filterParents();
+  }
+
+  private filterParents(): void {
+    this.potentialFathers = this.pigeons.filter(pigeon => pigeon.gender === 'Samiec');
+    this.potentialMothers = this.pigeons.filter(pigeon => pigeon.gender === 'Samica');
   }
 
   submitForm() {

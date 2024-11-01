@@ -3,4 +3,7 @@ export interface PigeonDTO {
   gender?: string;
   color?: string;
   userId?: number;
+  fatherRing?: string;
+  motherRing?: string;
+  description?: string;
 }

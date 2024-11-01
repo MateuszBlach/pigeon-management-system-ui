@@ -7,6 +7,22 @@
         <input matInput type="text" id="ring" [(ngModel)]="pigeon.ring" name="ring" required>
       </mat-form-field>
       <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Ojciec</mat-label>
+        <mat-select id="fatherRing" [(ngModel)]="pigeon.fatherRing" name ="fatherRing">
+          <mat-option *ngFor="let father of potentialFathers" [value]="father.ring">
+            {{ father.ring }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
+        <mat-label>Matka</mat-label>
+        <mat-select id="motherRing" [(ngModel)]="pigeon.motherRing" name ="motherRing">
+          <mat-option *ngFor="let mother of potentialMothers" [value]="mother.ring">
+            {{ mother.ring }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-fullwidth">
         <mat-label>Płeć</mat-label>
         <mat-select id="gender" [(ngModel)]="pigeon.gender" name="gender" required>
           <mat-option [value]="'Samiec'">Samiec</mat-option>
@@ -37,6 +53,10 @@
           <mat-option [value]="'Szpakowata pstra'">19-Szpakowata pstra</mat-option>
           <mat-option [value]="'Czerwona szpakowata'">20-Czerwona szpakowata</mat-option>
         </mat-select>
+      </mat-form-field>
+      <mat-form-field  appearance="fill" class="form-fullwidth">
+        <mat-label>Opis</mat-label>
+        <textarea matInput id="description" [(ngModel)]="pigeon.description" name="description"></textarea>
       </mat-form-field>
       <div class="form-button-container">
         <button mat-flat-button [disabled]="!form.valid" type="submit">{{ mode == 'add' ? 'Dodaj' : 'Zapisz'}}</button>

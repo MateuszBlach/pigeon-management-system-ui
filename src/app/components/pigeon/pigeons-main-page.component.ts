@@ -30,7 +30,7 @@ export class PigeonsMainPageComponent implements OnInit {
     {
       headerName: 'Akcje',
       field: 'actions',
-      width: 270,
+      width: 275,
       cellRenderer: () => {
         return `
           <button mat-button class="edit-btn grid-btn">Edytuj</button>
@@ -43,6 +43,9 @@ export class PigeonsMainPageComponent implements OnInit {
     {headerName: 'Numer obrączki', field: 'ring', width: 220},
     {headerName: 'Płeć', field: 'gender', width: 200},
     {headerName: 'Barwa', field: 'color', width: 220},
+    {headerName: 'Ojciec', field: 'fatherRing', width: 220},
+    {headerName: 'Matka', field: 'motherRing', width: 220},
+    {headerName: 'Opis', field: 'description', width: 400},
   ];
 
   constructor(
@@ -55,11 +58,12 @@ export class PigeonsMainPageComponent implements OnInit {
 
   openAddPigeonDialog() {
     this.dialog.open(AddPigeonComponent, {
-      width: '300px',
-      height: '400px',
+      width: '500px',
+      height: '800px',
       data: {
         mode: "add",
-        pigeon: {}
+        pigeon: {},
+        pigeons: this.pigeons,
       }
     })
     .afterClosed().subscribe((result: boolean) => {
@@ -104,11 +108,12 @@ export class PigeonsMainPageComponent implements OnInit {
 
   editPigeon(pigeon: PigeonDTO): void {
     this.dialog.open(AddPigeonComponent, {
-      width: '300px',
-      height: '400px',
+      width: '500px',
+      height: '800px',
       data: {
         mode: "edit",
-        pigeon: pigeon
+        pigeon: pigeon,
+        pigeons: this.pigeons,
       }
     })
       .afterClosed().subscribe((result: boolean) => {
