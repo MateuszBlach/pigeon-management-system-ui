@@ -1,14 +1,17 @@
-<div class="items-center">
-  <div style="width: 914px" class="above-grid">
-    <button mat-flat-button (click)="openAddPigeonDialog()">Dodaj gołębia</button>
-    <input type="text" placeholder="Wyszukaj gołębia..." (input)="onGridQuickFilterChanged($event)">
-  </div>
-  <ag-grid-angular
-    style="width: 90%; height: 650px"
-    class="ag-theme-alpine"
-    [rowData]="pigeons"
-    [columnDefs]="columnDefs"
-    [quickFilterText]="gridQuickFilter"
-  >
-  </ag-grid-angular>
+<div class="items-center overlay">
+  <mat-card style="padding: 15px">
+    <mat-card-title>Spis gołębi</mat-card-title>
+    <div style="width: 1350px" class="above-grid">
+      <button mat-flat-button (click)="openAddPigeonDialog()">Dodaj gołębia</button>
+      <input type="text" placeholder="Wyszukaj gołębia..." (input)="onGridQuickFilterChanged($event)">
+    </div>
+    <ag-grid-angular
+      style="width: 1350px; height: 650px; margin-top: 15px"
+      class="ag-theme-alpine"
+      [rowData]="pigeons"
+      [columnDefs]="columnDefs"
+      [quickFilterText]="gridQuickFilter"
+    >
+    </ag-grid-angular>
+  </mat-card>
 </div>

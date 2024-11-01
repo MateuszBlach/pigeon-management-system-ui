@@ -10,6 +10,7 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
+import {MatCard, MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: "pigeon",
@@ -17,7 +18,9 @@ import {AlertType} from "../../models/alert.model";
   imports: [
     AddPigeonComponent,
     AgGridAngular,
-    MatButton
+    MatButton,
+    MatCard,
+    MatCardTitle
   ],
   templateUrl: "./pigeons-main-page.component.html"
 })
@@ -33,16 +36,16 @@ export class PigeonsMainPageComponent implements OnInit {
       width: 275,
       cellRenderer: () => {
         return `
-          <button mat-button class="edit-btn grid-btn">Edytuj</button>
-          <button mat-button class="delete-btn grid-btn">Usuń</button>
-          <button mat-button class="redirect-btn grid-btn">Wyświetl wyniki</button>
+          <button class="edit-btn grid-btn">Edytuj</button>
+          <button class="delete-btn grid-btn">Usuń</button>
+          <button class="redirect-btn grid-btn">Wyświetl wyniki</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
     },
     {headerName: 'Numer obrączki', field: 'ring', width: 220},
-    {headerName: 'Płeć', field: 'gender', width: 200},
-    {headerName: 'Barwa', field: 'color', width: 220},
+    {headerName: 'Płeć', field: 'gender', width: 140},
+    {headerName: 'Barwa', field: 'color', width: 170},
     {headerName: 'Ojciec', field: 'fatherRing', width: 220},
     {headerName: 'Matka', field: 'motherRing', width: 220},
     {headerName: 'Opis', field: 'description', width: 400},

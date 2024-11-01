@@ -12,6 +12,10 @@ mat-card-title {
   padding-bottom: 10px;
 }
 
+.overlay {
+  margin: 20px;
+}
+
 .form-card {
   max-width: 400px;
   margin: 2em auto;
@@ -89,17 +93,19 @@ form {
 
 
 .grid-btn {
-  background: cornsilk;
+  background: #005cbb;
+  color: white;
+  font-size: 12px;
   font-weight: bold;
   font-family: unset;
-  margin: 2px;
   padding: 5px;
   border-radius: 20px;
 }
 
 .grid-btn:hover {
-  background-color: burlywood;
+  background-color: #1469c0;
 }
+
 
 .items-center {
   display: flex;
@@ -119,7 +125,7 @@ form {
 }
 
 .active-button {
-  background-color: indianred;
+  background-color: #343dff;
 }
 
 .user-info {
@@ -130,7 +136,6 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
 }
 
 .router-outlet-overlay {
