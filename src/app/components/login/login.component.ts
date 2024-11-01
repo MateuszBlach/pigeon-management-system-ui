@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -23,7 +23,7 @@ import {AlertType} from "../../models/alert.model";
   ],
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   user: UserDTO =  {};
 
@@ -33,6 +33,12 @@ export class LoginComponent {
     private userService: UserService,
     private alertService: AlertService,
   ) {}
+
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/pigeon']);
+    }
+  }
 
   login() {
     this.userService.login(this.user).subscribe(
