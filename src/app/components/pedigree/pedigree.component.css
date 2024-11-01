@@ -1,0 +1,42 @@
+.pigeon-selector {
+  margin-bottom: 20px;
+}
+
+.details-card,
+.ancestor-card {
+  padding: 16px;
+  text-align: center;
+}
+
+.pigeon-info {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pigeon-info li {
+  margin: 8px 0;
+}
+
+.pedigree-grid {
+  margin-top: 20px;
+}
+
+.ancestor-card {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+}
+
+.pigeon-section {
+  display: flex;
+  gap: 20px;
+}
+
+.pigeon-selector,
+.pigeon-details {
+  flex: 1;
+}
+
+.details-card,
+.selector {
+  width: 100%;
+}

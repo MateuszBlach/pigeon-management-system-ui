@@ -5,6 +5,10 @@
             (click)="navigate('pigeon')">Gołębie</button>
 
     <button class="nav-button"
+            [ngClass]="{'active-button': lastClickedButton === 'pedigree'}"
+            (click)="navigate('pedigree')">Rodowody</button>
+
+    <button class="nav-button"
             [ngClass]="{'active-button': lastClickedButton === 'pigeon-results'}"
             (click)="navigate('pigeon-results')">Wyniki gołębi</button>
 

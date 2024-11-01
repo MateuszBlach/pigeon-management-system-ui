@@ -1,0 +1,156 @@
+<section class="pigeon-section">
+  <div class="pigeon-selector">
+    <mat-card class="selector">
+      <mat-card-title>Wybierz gołębia</mat-card-title>
+      <mat-card-content>
+        <form #form="ngForm" (ngSubmit)="submitForm()">
+          <mat-form-field appearance="fill">
+            <mat-label>Numer obrączki</mat-label>
+            <mat-select id="pigeon" [(ngModel)]="selectedPigeon" name="pigeon" required>
+              <mat-option *ngFor="let pigeon of pigeons" [value]="pigeon">
+                {{ pigeon.ring }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="form-button-container">
+            <button mat-flat-button color="primary" [disabled]="!form.valid" type="submit">Wyświetl wyniki</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="selectedPigeon" class="pigeon-details">
+    <mat-card class="details-card">
+      <mat-card-title>Szczegóły Gołębia</mat-card-title>
+      <mat-card-content>
+        <ul class="pigeon-info">
+          <li><strong>Numer obrączki:</strong> {{ selectedPigeon.ring }}</li>
+          <li><strong>Kolor:</strong> {{ selectedPigeon.color }}</li>
+          <li><strong>Płeć:</strong> {{ selectedPigeon.gender }}</li>
+          <li *ngIf="selectedPigeon.fatherRing"><strong>Ojciec:</strong> {{ selectedPigeon.fatherRing }}</li>
+          <li *ngIf="selectedPigeon.motherRing"><strong>Matka:</strong> {{ selectedPigeon.motherRing }}</li>
+          <li *ngIf="selectedPigeon.description"><strong>Opis:</strong> {{ selectedPigeon.description }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+
+<section *ngIf="isTreeBuilt">
+  <mat-grid-list cols="8" rowHeight="200px" class="pedigree-grid">
+    <mat-grid-tile colspan="8" class="grid-item">
+      <mat-card>
+        <mat-card-title>{{ tree?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="4" class="grid-item">
+      <mat-card *ngIf="tree?.father">
+        <mat-card-title>{{ tree.father?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.father?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.father?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="4" class="grid-item">
+      <mat-card *ngIf="tree?.mother">
+        <mat-card-title>{{ tree.mother?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.mother?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.mother?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2" class="grid-item">
+      <mat-card *ngIf="tree?.father?.father">
+        <mat-card-title>{{ tree.father?.father?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.father?.father?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.father?.father?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" class="grid-item">
+      <mat-card *ngIf="tree?.father?.mother">
+        <mat-card-title>{{ tree.father?.mother?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.father?.mother?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.father?.mother?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.father">
+        <mat-card-title>{{ tree.mother?.father?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.mother?.father?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.mother?.father?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.mother">
+        <mat-card-title>{{ tree.mother?.mother?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.mother?.mother?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.mother?.mother?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.father?.father?.father">
+        <mat-card-title>{{ tree.father?.father?.father?.pigeon?.ring }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Kolor:</strong> {{ tree.father?.father?.father?.pigeon?.color }}</p>
+          <p><strong>Płeć:</strong> {{ tree.father?.father?.father?.pigeon?.gender }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.father?.father?.mother">
+        <mat-card-title>{{ tree.father?.father?.mother?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.father?.mother?.father">
+        <mat-card-title>{{ tree.father?.mother?.father?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.father?.mother?.mother">
+        <mat-card-title>{{ tree.father?.mother?.mother?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.father?.father">
+        <mat-card-title>{{ tree.mother?.father?.father?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.father?.mother">
+        <mat-card-title>{{ tree.mother?.father?.mother?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.mother?.father">
+        <mat-card-title>{{ tree.mother?.mother?.father?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" class="grid-item">
+      <mat-card *ngIf="tree?.mother?.mother?.mother">
+        <mat-card-title>{{ tree.mother?.mother?.mother?.pigeon?.ring }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</section>
+
+

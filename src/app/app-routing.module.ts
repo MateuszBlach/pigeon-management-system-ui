@@ -7,6 +7,7 @@ import { PigeonsMainPageComponent } from "./components/pigeon/pigeons-main-page.
 import {FlightMainPageComponent} from "./components/flights/flight-main-page.component";
 import {FlightRecordsMainComponent} from "./components/flight-records/flight-records-main-component";
 import {PigeonResultsComponent} from "./components/pigeon-results/pigeon-results.component";
+import {PedigreeComponent} from "./components/pedigree/pedigree.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'pigeon-results', component: PigeonResultsComponent, canActivate: [AuthGuard] },
   { path: 'flights', component: FlightMainPageComponent, canActivate: [AuthGuard] },
   { path: 'flight-records', component: FlightRecordsMainComponent, canActivate: [AuthGuard] },
+  { path: 'pedigree', component: PedigreeComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
