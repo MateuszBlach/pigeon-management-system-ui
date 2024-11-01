@@ -39,6 +39,7 @@
   gap: 20px;
 }
 
+.user-info,
 .pigeon-selector,
 .pigeon-details {
   flex: 1;
@@ -62,15 +63,36 @@
   margin-top: 20px;
 }
 
-.pigeon-info-table {
+.pigeon-info-table, .user-info-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.pigeon-info-table th, .pigeon-info-table td {
+.pigeon-info-table th,
+.pigeon-info-table td,
+.user-info-table th,
+.user-info-table td{
   border-bottom: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+}
+
+
+.header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between title and button */
+  align-items: center; /* Center align items vertically */
+  width: 100%; /* Full width of the card */
+}
+
+.title {
+  padding-left: 150px;
+  flex: 1; /* Allow title to take available space */
+  text-align: center; /* Center the title text */
+}
+
+.btn-right {
+  margin-left: auto; /* Push button to the right */
 }
 
 

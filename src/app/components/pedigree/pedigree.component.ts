@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {PigeonDTO} from "../../dto/pigeon.dto";
 import {PigeonService} from "../../services/pigeon/pigeon.service";
 import {AuthService} from "../../services/auth/auth.service";
@@ -14,7 +14,10 @@ import {MatSelect} from "@angular/material/select";
 import {CommonModule, NgForOf} from "@angular/common";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {PedigreeTreeNode} from "../../models/pedigree-tree.node";
-
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import {UserDTO} from "../../dto/user.dto";
+import {LocalStorageService} from "../../services/local-storage/local-storage.service";
 
 @Component({
   standalone: true,
@@ -45,15 +48,20 @@ export class PedigreeComponent implements OnInit {
   selectedPigeon!: PigeonDTO;
   tree!: PedigreeTreeNode;
   isTreeBuilt: boolean = false;
+  isPdfBuilt: boolean = false;
+  user!: UserDTO;
 
   constructor(
     private pigeonService: PigeonService,
     private authService: AuthService,
     private alertService: AlertService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private localStorageService: LocalStorageService,
   ) {}
 
   ngOnInit(): void {
     this.loadPigeons();
+    this.setUser();
   }
 
   private loadPigeons() {
@@ -77,11 +85,9 @@ export class PedigreeComponent implements OnInit {
     }
     this.tree = this.findAncestors(this.tree);
     this.isTreeBuilt = true;
-    console.log(this.tree)
   }
 
   private findAncestors(node: PedigreeTreeNode): PedigreeTreeNode {
-
     if (node.pigeon.fatherRing) {
       const fatherPigeon = this.pigeons.find(pigeon => pigeon.ring === node.pigeon.fatherRing);
       if (fatherPigeon) {
@@ -91,7 +97,6 @@ export class PedigreeComponent implements OnInit {
         node.father = this.findAncestors(node.father);
       }
     }
-
     if (node.pigeon.motherRing) {
       const motherPigeon = this.pigeons.find(pigeon => pigeon.ring === node.pigeon.motherRing);
       if (motherPigeon) {
@@ -101,8 +106,40 @@ export class PedigreeComponent implements OnInit {
         node.mother = this.findAncestors(node.mother);
       }
     }
-
     return node;
+  }
+
+  generatePDF() {
+    this.isPdfBuilt = true
+    this.changeDetectorRef.detectChanges()
+    const dataElement = document.getElementById('pdf-content');
+    if (dataElement) {
+      html2canvas(dataElement).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('landscape', 'mm', 'a4');
+
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        const imgWidth = 260;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        const xOffset = (pageWidth - imgWidth) / 2;
+        const yOffset = (pageHeight - imgHeight) / 2;
+
+        pdf.addImage(imgData, 'PNG', xOffset, yOffset, imgWidth, imgHeight);
+        pdf.save(`${this.selectedPigeon.ring}.pdf`);
+      });
+    }
+    this.isPdfBuilt = false;
+    this.changeDetectorRef.detectChanges()
+  }
+
+  private setUser() {
+    const user = this.localStorageService.getLoggedInUser();
+    if (user) {
+      this.user = user;
+    }
   }
 
 }

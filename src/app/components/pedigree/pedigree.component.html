@@ -1,6 +1,6 @@
-<div class="overlay">
+<div class="overlay" id="pdf-content">
   <section class="pigeon-section">
-    <div class="pigeon-selector">
+    <div *ngIf="!isPdfBuilt" class="pigeon-selector">
       <mat-card>
         <mat-card-title>Wybierz gołębia</mat-card-title>
         <mat-card-content>
@@ -18,6 +18,29 @@
               <button mat-flat-button color="primary" [disabled]="!form.valid" type="submit">Wyświetl rodowód</button>
             </div>
           </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div *ngIf="isPdfBuilt" class="user-info">
+      <mat-card>
+        <mat-card-title>Dane hodowcy</mat-card-title>
+        <mat-card-content>
+          <table class="user-info-table">
+            <tbody>
+            <tr>
+              <td><strong>Imię:</strong></td>
+              <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+              <td><strong>Nazwisko:</strong></td>
+              <td>{{ user.surname }}</td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td>{{ user.email }}</td>
+            </tr>
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
     </div>
@@ -62,9 +85,12 @@
 
   <section *ngIf="isTreeBuilt">
     <mat-card class="tree-card">
-      <mat-card-title>
-        Drzewo genealogiczne dla gołębia {{ selectedPigeon.ring }}
-      </mat-card-title>
+      <div class="header" *ngIf="!isPdfBuilt" >
+        <mat-card-title class="title">
+          Drzewo genealogiczne dla gołębia {{ selectedPigeon.ring }}
+        </mat-card-title>
+        <button mat-flat-button color="primary" class="btn-right" (click)="generatePDF()">Zapisz do PDF</button>
+      </div>
       <mat-grid-list cols="8" rowHeight="150px" class="pedigree-grid">
         <mat-grid-tile colspan="8" class="grid-item">
           <mat-card>
