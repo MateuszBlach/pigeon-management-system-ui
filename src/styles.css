@@ -12,9 +12,17 @@ mat-card-title {
   padding-bottom: 10px;
 }
 
+ag-grid-angular {
+  margin-top: 15px;
+}
+
 .overlay {
   margin: 20px;
 }
+
+.card-overlay {
+  padding: 15px;
+ }
 
 .form-card {
   max-width: 400px;
@@ -174,3 +182,113 @@ form {
   max-width: 500px;
   height: 700px;
 }
+
+.shared-section {
+  display: flex;
+  gap: 20px;
+}
+
+.tree-title{
+
+}
+
+.pigeon-selector,
+.flight-selector{
+  margin-bottom: 20px;
+}
+
+.details-card,
+.ancestor-card {
+  padding: 16px;
+  text-align: center;
+}
+
+.pigeon-info {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pigeon-info li {
+  margin: 8px 0;
+}
+
+.pedigree-grid {
+  margin-top: 20px;
+}
+
+.grid-item mat-card {
+  min-height: 120px;
+  min-width: 190px;
+}
+
+.pigeon-section {
+  display: flex;
+  gap: 20px;
+}
+
+.user-details,
+.pigeon-selector,
+.flight-selector,
+.pigeon-details,
+.flight-details {
+  flex: 1;
+}
+
+.pigeon-selector,
+.flight-selector {
+  max-width: 33.33%;
+}
+
+.pigeon-details,
+.flight-details{
+  max-width: 66.67%;
+}
+
+.details-card,
+.selector {
+  width: 100%;
+}
+
+.tree-card {
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.pigeon-info-table, .user-info-table, .flight-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pigeon-info-table th,
+.pigeon-info-table td,
+.flight-info-table th,
+.flight-info-table td,
+.user-info-table th,
+.user-info-table td{
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  padding-left: 150px;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-right {
+  margin-left: auto;
+}
+
+
+
+
+

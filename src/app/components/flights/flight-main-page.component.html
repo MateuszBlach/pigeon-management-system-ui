@@ -1,12 +1,12 @@
 <div class="items-center overlay">
-  <mat-card style="padding: 15px">
+  <mat-card class="card-overlay">
     <mat-card-title>Spis lotów</mat-card-title>
     <div style="width: 1165px" class="above-grid">
       <button mat-flat-button (click)="openAddFlightDialog()">Dodaj lot</button>
       <input type="text" placeholder="Wyszukaj lotu..." (input)="onGridQuickFilterChanged($event)">
     </div>
     <ag-grid-angular
-      style="width: 1165px; height: 700px; margin-top: 15px"
+      style="width: 1165px; height: 700px;"
       class="ag-theme-alpine"
       [rowData]="flights"
       [columnDefs]="columnDefs"
