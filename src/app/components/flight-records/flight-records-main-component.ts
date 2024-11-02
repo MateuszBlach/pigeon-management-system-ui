@@ -75,9 +75,12 @@ export class FlightRecordsMainComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadFlights()
+  }
+
+  private readQueryParams(): void {
     if(this.route.snapshot.queryParams['id']){
       this.loadFlightRecords(this.route.snapshot.queryParams['id']);
-      this.selectedFlight.id = this.route.snapshot.queryParams['id'];
+      this.selectedFlight = <FlightDTO>this.flights.find(flight => flight.id === Number(this.route.snapshot.queryParams['id']));
     }
   }
 
@@ -88,6 +91,7 @@ export class FlightRecordsMainComponent implements OnInit{
         if(this.flights.length === 0) {
           this.alertService.showAlert(AlertType.Warning,"Nie masz jeszcze żadnych lotów.")
         }
+        this.readQueryParams();
       }
     )
   }
