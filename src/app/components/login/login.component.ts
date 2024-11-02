@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    // if (this.authService.isLoggedIn()) {
-    //   this.router.navigate(['/pigeon']);
-    // }
+    if (this.authService.isUserLoggedIn()) {
+      this.router.navigate(['/pigeon']);
+    }
   }
 
   login() {

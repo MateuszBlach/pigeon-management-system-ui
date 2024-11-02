@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { UserDTO } from "../../dto/user.dto";
-import { backend } from "../../shared/application-constans";
-import { HttpService } from '../http/http.service';
 import {LocalStorageService} from "../local-storage/local-storage.service";
 
 @Injectable({
@@ -11,6 +9,7 @@ import {LocalStorageService} from "../local-storage/local-storage.service";
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private isloggedIn = false;
 
   constructor(private localStorageService: LocalStorageService) {
     this.initializeAuthState()
@@ -19,6 +18,7 @@ export class AuthService {
   private initializeAuthState(): void {
     if(this.localStorageService.getLoggedInUser() !== null) {
       this.loggedIn.next(true);
+      this.isloggedIn = true;
     }
   }
 
@@ -28,6 +28,10 @@ export class AuthService {
 
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
+  }
+
+  isUserLoggedIn(): boolean {
+    return this.isloggedIn;
   }
 
 
@@ -50,8 +54,10 @@ export class AuthService {
   setLoggedInUser(user: UserDTO | null): void {
     if (user !== null) {
       this.loggedIn.next(true);
+      this.isloggedIn = true;
     } else {
       this.loggedIn.next(false);
+      this.isloggedIn = false;
     }
     this.localStorageService.setLoggedInUser(user)
   }
