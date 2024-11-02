@@ -99,6 +99,10 @@ form {
   margin-left: 0;
 }
 
+.login-card,
+.register-card {
+  margin-top: 60px;
+}
 
 .grid-btn {
   background: #005cbb;
@@ -106,8 +110,8 @@ form {
   font-size: 12px;
   font-weight: bold;
   font-family: unset;
-  padding: 5px;
-  border-radius: 20px;
+  padding: 7px;
+  border-radius: 10px;
 }
 
 .grid-btn:hover {
