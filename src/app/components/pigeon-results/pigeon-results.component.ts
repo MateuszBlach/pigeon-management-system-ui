@@ -45,6 +45,7 @@ export class PigeonResultsComponent implements OnInit {
   columnDefs: ColDef[] = [
     { headerName: 'Miasto',field: 'city', width: 120},
     { headerName: 'Data',field: 'flightDate', width: 120},
+    { headerName: 'Miejsce na liście', field: 'position', width: 180 },
     { headerName: 'Coefic',field: 'coefic', width: 100},
     { headerName: 'Punkty',field: 'points', width: 100},
     { headerName: 'Dystans [km]',field: 'flightRecordDistance', width: 150},

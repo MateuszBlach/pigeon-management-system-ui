@@ -3,5 +3,6 @@ export interface PigeonResultDTO {
   flightDate: Date;
   coefic: number;
   points: number;
-  flightRecordDistance: number;
+  flightDistance: number;
+  position: number;
 }
