@@ -58,7 +58,7 @@ export class FlightRecordsMainComponent implements OnInit{
       onCellClicked: (params) => this.handleActionClick(params)
     },
     {headerName: 'Numer obrączki', field: 'pigeonRing', width: 220},
-    {headerName: 'Dystans [km]', field: 'distance', width: 180},
+    {headerName: 'Pozycja na liście', field: 'position', width: 180},
     {headerName: 'Coefic', field: 'coefic',width: 100},
     {headerName: 'Punkty', field: 'points',width: 100}
   ]

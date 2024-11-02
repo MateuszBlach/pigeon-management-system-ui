@@ -59,7 +59,7 @@ export class AddFlightRecordComponent implements OnInit {
   private initializeFlightRecord(): FlightRecordDTO {
     return {
       pigeonRing: '',
-      distance: 0,
+      position: 0,
       coefic: 0,
       points: 0
     };
