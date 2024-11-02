@@ -62,10 +62,11 @@ export class PigeonResultsComponent implements OnInit {
 
   ngOnInit() {
     this.loadPigeons();
+  }
+
+  private readQueryParams() {
     if(this.route.snapshot.queryParams['ring']){
-      this.selectedPigeon = {
-        ring: this.route.snapshot.queryParams['ring'],
-      }
+      this.selectedPigeon = <PigeonDTO>this.pigeons.find(pigeon => pigeon.ring === this.route.snapshot.queryParams['ring'])
       this.loadFlightRecords(this.selectedPigeon.ring);
     }
   }
@@ -77,6 +78,7 @@ export class PigeonResultsComponent implements OnInit {
         if(this.pigeons.length === 0){
           this.alertService.showAlert(AlertType.Warning, "Nie posiadasz żadnych gołębi.")
         }
+        this.readQueryParams();
       },
       error => {
         this.alertService.showAlert(AlertType.Error, "Nie udało się załadować gołębi.")

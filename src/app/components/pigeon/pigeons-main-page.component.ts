@@ -38,7 +38,8 @@ export class PigeonsMainPageComponent implements OnInit {
         return `
           <button class="edit-btn grid-btn">Edytuj</button>
           <button class="delete-btn grid-btn">Usuń</button>
-          <button class="redirect-btn grid-btn">Wyświetl wyniki</button>
+          <button class="results-btn grid-btn">Wyniki</button>
+          <button class="pedigree-btn grid-btn">Rodowód</button>
         `;
       },
       onCellClicked: (params) => this.handleActionClick(params)
@@ -104,8 +105,10 @@ export class PigeonsMainPageComponent implements OnInit {
       this.editPigeon(rowData);
     } else if (clickedElement.classList.contains('delete-btn')) {
       this.deletePigeon(rowData);
-    } else if (clickedElement.classList.contains('redirect-btn')) {
+    } else if (clickedElement.classList.contains('results-btn')) {
       this.router.navigate(['pigeon-results'], { queryParams: { ring: rowData.ring } });
+    } else if (clickedElement.classList.contains('pedigree-btn')) {
+      this.router.navigate(['pedigree'], { queryParams: { ring: rowData.ring } });
     }
   }
 

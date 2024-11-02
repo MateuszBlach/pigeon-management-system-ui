@@ -18,6 +18,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import {UserDTO} from "../../dto/user.dto";
 import {LocalStorageService} from "../../services/local-storage/local-storage.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   standalone: true,
@@ -57,12 +58,21 @@ export class PedigreeComponent implements OnInit {
     private alertService: AlertService,
     private changeDetectorRef: ChangeDetectorRef,
     private localStorageService: LocalStorageService,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.loadPigeons();
     this.setUser();
   }
+
+  private readQueryParams() {
+    if(this.route.snapshot.queryParams['ring']){
+      this.selectedPigeon = <PigeonDTO>this.pigeons.find(pigeon => pigeon.ring === this.route.snapshot.queryParams['ring'])
+    }
+  }
+
+
 
   private loadPigeons() {
     this.pigeonService.getPigeons(this.authService.getLoggedUserId()).subscribe(
@@ -71,6 +81,7 @@ export class PedigreeComponent implements OnInit {
         if(this.pigeons.length === 0){
           this.alertService.showAlert(AlertType.Warning, "Nie posiadasz żadnych gołębi.")
         }
+        this.readQueryParams();
       }
     )
   }
