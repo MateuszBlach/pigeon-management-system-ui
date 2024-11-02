@@ -157,9 +157,12 @@ form {
 
 .alert {
   padding: 15px;
-  margin: 10px 25%;
+  margin: 0 25%;
   border-radius: 5px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;

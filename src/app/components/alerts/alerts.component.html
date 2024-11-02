@@ -1,4 +1,6 @@
-<div *ngFor="let alert of alerts" class="alert" [ngClass]="alert.type">
+<div *ngFor="let alert of alerts; let i = index" class="alert"
+     [ngClass]="alert.type"
+     [ngStyle]="{'top': (75 + i * 60) + 'px'}">
   <span>{{ alert.message }}</span>
   <button class="close" (click)="removeAlert(alert.id)">&#x2716;</button>
 </div>
