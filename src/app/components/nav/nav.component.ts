@@ -16,7 +16,6 @@ import {LocalStorageService} from "../../services/local-storage/local-storage.se
 })
 export class NavComponent implements OnInit{
 
-  lastClickedButton: string = 'pigeon';
   user: UserDTO = {};
 
   constructor(private authService: AuthService, private router: Router,private localStorageService: LocalStorageService) {}
@@ -38,7 +37,6 @@ export class NavComponent implements OnInit{
   }
 
   navigate(route: string) {
-    this.lastClickedButton = route;
     this.router.navigate([route]);
   }
 

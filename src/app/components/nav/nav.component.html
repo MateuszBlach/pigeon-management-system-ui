@@ -1,24 +1,24 @@
 <div xmlns="http://www.w3.org/1999/html">
   <div class="nav-bar">
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'pigeon'}"
-            (click)="navigate('pigeon')">Gołębie</button>
+            (click)="navigate('pigeon')">Gołębie
+    </button>
 
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'pedigree'}"
-            (click)="navigate('pedigree')">Rodowody</button>
+            (click)="navigate('pedigree')">Rodowody
+    </button>
 
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'pigeon-results'}"
-            (click)="navigate('pigeon-results')">Wyniki gołębi</button>
+            (click)="navigate('pigeon-results')">Wyniki gołębi
+    </button>
 
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'flights'}"
-            (click)="navigate('flights')">Loty</button>
+            (click)="navigate('flights')">Loty
+    </button>
 
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'flight-records'}"
-            (click)="navigate('flight-records')">Wyniki lotów</button>
+            (click)="navigate('flight-records')">Wyniki lotów
+    </button>
 
     <div class="user-info">
       <span>Zalogowany hodowca:</span>
@@ -27,8 +27,8 @@
     </div>
 
     <button class="nav-button"
-            [ngClass]="{'active-button': lastClickedButton === 'logout'}"
-            (click)="logout()">Wyloguj się</button>
+            (click)="logout()">Wyloguj się
+    </button>
 
 
   </div>
