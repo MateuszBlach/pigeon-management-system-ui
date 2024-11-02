@@ -44,12 +44,12 @@ export class PigeonsMainPageComponent implements OnInit {
       },
       onCellClicked: (params) => this.handleActionClick(params)
     },
-    {headerName: 'Numer obrączki', field: 'ring', width: 220},
-    {headerName: 'Płeć', field: 'gender', width: 140},
+    {headerName: 'Numer obrączki', field: 'ring', width: 170},
+    {headerName: 'Płeć', field: 'gender', width: 90},
     {headerName: 'Barwa', field: 'color', width: 170},
-    {headerName: 'Ojciec', field: 'fatherRing', width: 220},
-    {headerName: 'Matka', field: 'motherRing', width: 220},
-    {headerName: 'Opis', field: 'description', width: 400},
+    {headerName: 'Ojciec', field: 'fatherRing', width: 170},
+    {headerName: 'Matka', field: 'motherRing', width: 170},
+    {headerName: 'Opis', field: 'description', width: 300},
   ];
 
   constructor(
