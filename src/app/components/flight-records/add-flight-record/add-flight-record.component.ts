@@ -13,6 +13,7 @@ import {CommonModule} from "@angular/common";
 import {MatInput} from "@angular/material/input";
 import {AlertType} from "../../../models/alert.model";
 import {AlertService} from "../../../services/alert/alert.service";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   standalone: true,
@@ -26,7 +27,8 @@ import {AlertService} from "../../../services/alert/alert.service";
     MatSelect,
     MatOption,
     MatLabel,
-    MatInput
+    MatInput,
+    MatButton
   ],
   templateUrl: "./add-flight-record.component.html",
 })
