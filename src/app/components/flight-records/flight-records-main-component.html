@@ -1,5 +1,5 @@
 <div class="items-center overlay">
-  <mat-card class="card-overlay">
+  <mat-card class="card-overlay" style="width: 80%">
     <mat-card-title>Wyniki lotów</mat-card-title>
     <section class="shared-section">
       <div class="flight-selector">
@@ -59,6 +59,7 @@
       </div>
     </section>
 
+    <mat-card *ngIf="recordsLoaded" class="card-overlay items-center" style="margin-top: 20px">
     <div style="width: 780px" class="above-grid">
       <button mat-flat-button [disabled]="!selectedFlight" (click)="openAddFlightRecordDialog()">Dodaj wynik lotu
       </button>
@@ -72,5 +73,6 @@
       [quickFilterText]="gridQuickFilter"
     >
     </ag-grid-angular>
+  </mat-card>
   </mat-card>
 </div>

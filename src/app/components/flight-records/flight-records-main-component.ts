@@ -42,6 +42,7 @@ export class FlightRecordsMainComponent implements OnInit{
   selectedFlight!: FlightDTO;
 
   flightRecords!: FlightRecordDTO[];
+  recordsLoaded: boolean = false;
 
   columnDefs: ColDef[] = [
     {
@@ -95,6 +96,7 @@ export class FlightRecordsMainComponent implements OnInit{
     this.flightRecordService.getFlightRecords(flightId).subscribe(
       response => {
         this.flightRecords = response;
+        this.recordsLoaded = true;
         if(this.flightRecords.length === 0) {
           this.alertService.showAlert(AlertType.Warning,"Nie masz jeszcze żadnych wyników dla tego lotu.")
         }
