@@ -12,6 +12,8 @@ import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
 import {MatCard, MatCardTitle} from "@angular/material/card";
 import {ConfirmationComponent} from "../confirmation/confirmation.component";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 
 
 @Component({
@@ -22,6 +24,8 @@ import {ConfirmationComponent} from "../confirmation/confirmation.component";
     MatButton,
     MatCard,
     MatCardTitle,
+    MatFormField,
+    MatInput,
   ],
   templateUrl: "./flight-main-page.component.html"
 })

@@ -18,6 +18,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
 import {ConfirmationComponent} from "../confirmation/confirmation.component";
+import {MatInput} from "@angular/material/input";
 
 
 @Component({
@@ -33,7 +34,8 @@ import {ConfirmationComponent} from "../confirmation/confirmation.component";
     MatOption,
     FormsModule,
     MatButton,
-    AgGridAngular
+    AgGridAngular,
+    MatInput
   ],
   templateUrl: "./flight-records-main-component.html",
 })

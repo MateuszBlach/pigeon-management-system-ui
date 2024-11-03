@@ -12,6 +12,7 @@ import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
 import {MatCard, MatCardTitle} from "@angular/material/card";
 import {ConfirmationComponent} from "../confirmation/confirmation.component";
+import {MatFormField, MatInput} from "@angular/material/input";
 
 @Component({
   selector: "pigeon",
@@ -22,7 +23,9 @@ import {ConfirmationComponent} from "../confirmation/confirmation.component";
     AgGridAngular,
     MatButton,
     MatCard,
-    MatCardTitle
+    MatCardTitle,
+    MatInput,
+    MatFormField
   ],
   templateUrl: "./pigeons-main-page.component.html"
 })

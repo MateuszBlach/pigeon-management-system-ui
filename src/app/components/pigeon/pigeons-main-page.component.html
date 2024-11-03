@@ -3,7 +3,9 @@
     <mat-card-title>Spis gołębi</mat-card-title>
     <div style="width: 1350px" class="above-grid">
       <button mat-flat-button (click)="openAddPigeonDialog()">Dodaj gołębia</button>
-      <input type="text" placeholder="Wyszukaj gołębia..." (input)="onGridQuickFilterChanged($event)">
+      <mat-form-field>
+        <input matInput placeholder="Wyszukaj gołębia..." (input)="onGridQuickFilterChanged($event)">
+      </mat-form-field>
     </div>
     <ag-grid-angular
       style="width: 1350px; height: 650px;"

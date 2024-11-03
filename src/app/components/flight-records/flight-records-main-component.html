@@ -63,7 +63,9 @@
     <div style="width: 780px" class="above-grid">
       <button mat-flat-button [disabled]="!selectedFlight" (click)="openAddFlightRecordDialog()">Dodaj wynik lotu
       </button>
-      <input type="text" placeholder="Wyszukaj wynik lotu..." (input)="onGridQuickFilterChanged($event)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Wyszukaj wynik lotu..." (input)="onGridQuickFilterChanged($event)">
+      </mat-form-field>
     </div>
     <ag-grid-angular
       style="width: 780px; height: 650px"

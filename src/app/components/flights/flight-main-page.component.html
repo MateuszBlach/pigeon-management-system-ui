@@ -3,7 +3,9 @@
     <mat-card-title>Spis lotów</mat-card-title>
     <div style="width: 1165px" class="above-grid">
       <button mat-flat-button (click)="openAddFlightDialog()">Dodaj lot</button>
-      <input type="text" placeholder="Wyszukaj lotu..." (input)="onGridQuickFilterChanged($event)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Wyszukaj lotu..." (input)="onGridQuickFilterChanged($event)">
+      </mat-form-field>
     </div>
     <ag-grid-angular
       style="width: 1165px; height: 700px;"
