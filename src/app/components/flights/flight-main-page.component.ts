@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
 import {MatCard, MatCardTitle} from "@angular/material/card";
+import {ConfirmationComponent} from "../confirmation/confirmation.component";
 
 
 @Component({
@@ -111,17 +112,25 @@ export class FlightMainPageComponent implements OnInit{
   }
 
   private deleteFLight(flight: FlightDTO): void {
-    if (confirm(`Czy ma pewno chcesz usunąć lot z miasta ${flight.city} ?`)) {
-      this.flightService.deleteFlight(flight.id).subscribe(
-        response => {
-          this.loadFlights();
-          this.alertService.showAlert(AlertType.Success, "Pomyślnie usunięto lot.")
-        },
-        error => {
-          this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć lotu.")
-        }
-      )
-    }
+    this.dialog.open(ConfirmationComponent, {
+      height: '120px',
+      width: '900px',
+      data: {
+        message: `Czy ma pewno chcesz usunąć lot z miasta ${flight.city} ?`
+      }
+    }).afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.flightService.deleteFlight(flight.id).subscribe(
+          response => {
+            this.loadFlights();
+            this.alertService.showAlert(AlertType.Success, "Pomyślnie usunięto lot.")
+          },
+          error => {
+            this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć lotu.")
+          }
+        )
+      }
+    })
   }
 
   onGridQuickFilterChanged(event: any) {

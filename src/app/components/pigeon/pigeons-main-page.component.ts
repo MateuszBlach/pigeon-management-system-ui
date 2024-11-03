@@ -11,12 +11,14 @@ import {Router} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
 import {MatCard, MatCardTitle} from "@angular/material/card";
+import {ConfirmationComponent} from "../confirmation/confirmation.component";
 
 @Component({
   selector: "pigeon",
   standalone: true,
   imports: [
     AddPigeonComponent,
+    ConfirmationComponent,
     AgGridAngular,
     MatButton,
     MatCard,
@@ -132,17 +134,25 @@ export class PigeonsMainPageComponent implements OnInit {
 
 
   deletePigeon(pigeon: PigeonDTO): void {
-    if (confirm(`Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`)) {
-      this.pigeonService.deletePigeon(pigeon.ring).subscribe(
-        response => {
-          this.loadPigeons(this.authService.getLoggedUserId());
-          this.alertService.showAlert(AlertType.Success,"Pomyślnie usunięto gołębia.")
-        },
-        error => {
-          this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć gołębia.")
-        }
-      )
-    }
+    this.dialog.open(ConfirmationComponent, {
+      height: '120px',
+      width: '900px',
+      data: {
+        message: `Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`
+      }
+    }).afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.pigeonService.deletePigeon(pigeon.ring).subscribe(
+          response => {
+            this.loadPigeons(this.authService.getLoggedUserId());
+            this.alertService.showAlert(AlertType.Success,"Pomyślnie usunięto gołębia.")
+          },
+          error => {
+            this.alertService.showAlert(AlertType.Error, "Nie udało się usunąć gołębia.")
+          }
+        )
+      }
+    })
   }
 
   onGridQuickFilterChanged(event: any) {

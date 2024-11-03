@@ -1,0 +1,9 @@
+<div class="overlay">
+  <p>
+    {{ message }}
+  </p>
+  <div class="confirmation-buttons-container">
+    <button mat-flat-button color="primary" (click)="this.close(false)">Anuluj</button>
+    <button mat-flat-button color="warn" (click)="this.close(true)">Potwierdź</button>
+  </div>
+</div>

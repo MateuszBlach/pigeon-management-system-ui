@@ -17,6 +17,7 @@ import {AddFlightRecordComponent} from "./add-flight-record/add-flight-record.co
 import {ActivatedRoute} from "@angular/router";
 import {AlertService} from "../../services/alert/alert.service";
 import {AlertType} from "../../models/alert.model";
+import {ConfirmationComponent} from "../confirmation/confirmation.component";
 
 
 @Component({
@@ -141,7 +142,7 @@ export class FlightRecordsMainComponent implements OnInit{
     if (clickedElement.classList.contains('edit-btn')) {
       this.editFlightRecord(rowData);
     } else if (clickedElement.classList.contains('delete-btn')) {
-      this.deleteFLightRecord(rowData.id);
+      this.deleteFLightRecord(rowData);
     }
   }
 
@@ -163,15 +164,25 @@ export class FlightRecordsMainComponent implements OnInit{
     });
   }
 
-  private deleteFLightRecord(flightRecordId: number): void {
-    this.flightRecordService.deleteFlightRecord(flightRecordId).subscribe(
-      response => {
-        this.loadFlightRecords(this.selectedFlight.id);
-        this.alertService.showAlert(AlertType.Success, 'Pomyślnie usunięto wynik lotu.')
-      },
-      error => {
-        this.alertService.showAlert(AlertType.Success, 'Nie udało się usunąć wynik lotu.')
+  private deleteFLightRecord(flightRecord: FlightRecordDTO): void {
+    this.dialog.open(ConfirmationComponent, {
+      height: '140px',
+      width: '700px',
+      data: {
+        message: `Czy ma pewno chcesz usunąć wynik lotu dla gołębia o numerze obrączki ${flightRecord.pigeonRing}  ?`
       }
-    )
+    }).afterClosed().subscribe((result: boolean) => {
+      if (result && flightRecord.id != null) {
+        this.flightRecordService.deleteFlightRecord(flightRecord.id).subscribe(
+          response => {
+            this.loadFlightRecords(this.selectedFlight.id);
+            this.alertService.showAlert(AlertType.Success, 'Pomyślnie usunięto wynik lotu.')
+          },
+          error => {
+            this.alertService.showAlert(AlertType.Success, 'Nie udało się usunąć wynik lotu.')
+          }
+        )
+      }
+    })
   }
 }

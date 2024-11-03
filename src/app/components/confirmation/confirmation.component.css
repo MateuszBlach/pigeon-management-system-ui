@@ -1,0 +1,5 @@
+.confirmation-buttons-container {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
