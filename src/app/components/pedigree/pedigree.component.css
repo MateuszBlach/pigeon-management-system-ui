@@ -91,4 +91,10 @@
   margin-left: auto; /* Push button to the right */
 }
 
+.pedigree-background {
+  background-image: url('../../../app/assets/images/pedigree_bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
 

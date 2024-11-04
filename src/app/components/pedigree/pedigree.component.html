@@ -88,6 +88,7 @@
 
     <section *ngIf="isTreeBuilt">
       <mat-card class="tree-card">
+        <div class="pedigree-background">
         <div class="header" *ngIf="!isPdfBuilt">
           <mat-card-title class="title">
             Drzewo genealogiczne dla gołębia {{ selectedPigeon.ring }}
@@ -262,6 +263,7 @@
           <!--          </mat-card>-->
           <!--        </mat-grid-tile>-->
         </mat-grid-list>
+        </div>
       </mat-card>
     </section>
   </mat-card>
