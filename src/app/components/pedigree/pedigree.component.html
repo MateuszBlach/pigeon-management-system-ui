@@ -59,7 +59,7 @@
                 <td>{{ selectedPigeon.ring }}</td>
               </tr>
               <tr>
-                <td><strong>Kolor:</strong></td>
+                <td><strong>Barwa:</strong></td>
                 <td>{{ selectedPigeon.color }}</td>
               </tr>
               <tr>
@@ -100,7 +100,7 @@
             <mat-card>
               <mat-card-title>{{ tree.pigeon.ring }}</mat-card-title>
               <mat-card-content>
-                <p><strong>Kolor:</strong> {{ tree.pigeon.color }}</p>
+                <p><strong>Barwa:</strong> {{ tree.pigeon.color }}</p>
                 <p><strong>Płeć:</strong> {{ tree.pigeon.gender }}</p>
               </mat-card-content>
             </mat-card>
@@ -111,7 +111,7 @@
               <mat-card-title>{{ tree.father?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.father">
-                  <p><strong>Kolor:</strong> {{ tree.father?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.father?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.father?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -122,7 +122,7 @@
               <mat-card-title>{{ tree.mother?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.mother">
-                  <p><strong>Kolor:</strong> {{ tree.mother?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.mother?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.mother?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -134,7 +134,7 @@
               <mat-card-title>{{ tree.father?.father?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.father?.father">
-                  <p><strong>Kolor:</strong> {{ tree.father?.father?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.father?.father?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.father?.father?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -145,7 +145,7 @@
               <mat-card-title>{{ tree.father?.mother?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.father?.mother">
-                  <p><strong>Kolor:</strong> {{ tree.father?.mother?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.father?.mother?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.father?.mother?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -156,7 +156,7 @@
               <mat-card-title>{{ tree.mother?.father?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.mother?.father">
-                  <p><strong>Kolor:</strong> {{ tree.mother?.father?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.mother?.father?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.mother?.father?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -167,7 +167,7 @@
               <mat-card-title>{{ tree.mother?.mother?.pigeon?.ring }}</mat-card-title>
               <mat-card-content>
                 <div *ngIf="tree?.mother?.mother">
-                  <p><strong>Kolor:</strong> {{ tree.mother?.mother?.pigeon?.color }}</p>
+                  <p><strong>Barwa:</strong> {{ tree.mother?.mother?.pigeon?.color }}</p>
                   <p><strong>Płeć:</strong> {{ tree.mother?.mother?.pigeon?.gender }}</p>
                 </div>
               </mat-card-content>
@@ -179,7 +179,7 @@
           <!--            <mat-card-title>{{ tree.father?.father?.father?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.father?.father?.father">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.father?.father?.father?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.father?.father?.father?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.father?.father?.father?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -190,7 +190,7 @@
           <!--            <mat-card-title>{{ tree.father?.father?.mother?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.father?.father?.mother">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.father?.father?.mother?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.father?.father?.mother?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.father?.father?.mother?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -201,7 +201,7 @@
           <!--            <mat-card-title>{{ tree.father?.mother?.father?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.father?.mother?.father">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.father?.mother?.father?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.father?.mother?.father?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.father?.mother?.father?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -212,7 +212,7 @@
           <!--            <mat-card-title>{{ tree.father?.mother?.mother?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.father?.mother?.mother">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.father?.mother?.mother?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.father?.mother?.mother?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.father?.mother?.mother?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -223,7 +223,7 @@
           <!--            <mat-card-title>{{ tree.mother?.father?.father?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.mother?.father?.father">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.mother?.father?.father?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.mother?.father?.father?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.mother?.father?.father?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -234,7 +234,7 @@
           <!--            <mat-card-title>{{ tree.mother?.father?.mother?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.mother?.father?.mother">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.mother?.father?.mother?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.mother?.father?.mother?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.mother?.father?.mother?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -245,7 +245,7 @@
           <!--            <mat-card-title>{{ tree.mother?.mother?.father?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.mother?.mother?.father">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.mother?.mother?.father?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.mother?.mother?.father?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.mother?.mother?.father?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
@@ -256,7 +256,7 @@
           <!--            <mat-card-title>{{ tree.mother?.mother?.mother?.pigeon?.ring }}</mat-card-title>-->
           <!--            <mat-card-content>-->
           <!--              <div *ngIf="tree?.mother?.mother?.mother">-->
-          <!--                <p><strong>Kolor:</strong> {{ tree.mother?.mother?.mother?.pigeon?.color }}</p>-->
+          <!--                <p><strong>Barwa:</strong> {{ tree.mother?.mother?.mother?.pigeon?.color }}</p>-->
           <!--                <p><strong>Płeć:</strong> {{ tree.mother?.mother?.mother?.pigeon?.gender }}</p>-->
           <!--              </div>-->
           <!--            </mat-card-content>-->
