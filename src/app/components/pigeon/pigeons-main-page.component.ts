@@ -138,7 +138,7 @@ export class PigeonsMainPageComponent implements OnInit {
 
   deletePigeon(pigeon: PigeonDTO): void {
     this.dialog.open(ConfirmationComponent, {
-      height: '120px',
+      height: '140px',
       width: '900px',
       data: {
         message: `Czy ma pewno chcesz usunąć gołębia o numerze obrączki ${pigeon.ring} ?`
