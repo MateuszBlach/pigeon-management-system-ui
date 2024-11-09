@@ -8,10 +8,12 @@ import {FlightMainPageComponent} from "./components/flights/flight-main-page.com
 import {FlightRecordsMainComponent} from "./components/flight-records/flight-records-main-component";
 import {PigeonResultsComponent} from "./components/pigeon-results/pigeon-results.component";
 import {PedigreeComponent} from "./components/pedigree/pedigree.component";
+import {PasswordResetComponent} from "./components/password-reset/password-reset.component";
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'password-reset', component: PasswordResetComponent },
   { path: 'pigeon', component: PigeonsMainPageComponent, canActivate: [AuthGuard] },
   { path: 'pigeon-results', component: PigeonResultsComponent, canActivate: [AuthGuard] },
   { path: 'flights', component: FlightMainPageComponent, canActivate: [AuthGuard] },
