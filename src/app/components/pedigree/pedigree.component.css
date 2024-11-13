@@ -97,4 +97,15 @@
   background-position: center;
 }
 
+.pedigree-building {
+  mat-card {
+    border: 1px solid dimgray;
+    border-radius: 10px;
+  }
 
+  .user-details mat-card{
+    padding-top: 20px;
+    min-height: 290px;
+  }
+
+}
