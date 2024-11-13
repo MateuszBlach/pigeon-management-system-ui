@@ -144,6 +144,7 @@ export class PedigreeComponent implements OnInit {
     }
     this.isPdfBuilt = false;
     this.changeDetectorRef.detectChanges()
+    this.alertService.showAlert(AlertType.Success,"Rodowód jest pobierany i zostanie otworzony, gdy pobieranie się zakończy.")
   }
 
   private setUser() {
