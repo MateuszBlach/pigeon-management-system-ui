@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080'
+const baseUrl = 'http:/13.60.89.58:8080'
 
 export const backend = {
   baseUrl: baseUrl,
