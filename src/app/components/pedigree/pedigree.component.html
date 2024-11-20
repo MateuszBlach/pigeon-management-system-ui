@@ -1,6 +1,6 @@
 <div class="overlay" id="pdf-content" [ngClass]="isPdfBuilt ? 'pedigree-building' : ''">
   <mat-card class="card-overlay">
-    <mat-card-title>Rodowody</mat-card-title>
+    <mat-card-title>{{isPdfBuilt ? "" : "Rodowody"}}</mat-card-title>
     <section class="shared-section">
       <div *ngIf="!isPdfBuilt" class="pigeon-selector">
         <mat-card class="card-overlay">
